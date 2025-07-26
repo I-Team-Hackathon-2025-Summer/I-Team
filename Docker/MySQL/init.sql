@@ -54,7 +54,7 @@ VALUES
 
 INSERT INTO open_channels(channel_id, area_id, prefecture) 
 VALUES
-(1, 1, '北海道',)
+(1, 1, '北海道'),
 (1, 2, '青森'),
 (1, 3, '岩手'),
 (1, 4, '宮城'),
