@@ -12,3 +12,8 @@ def login_view():
 def login_process():
     email = request.form.get('email')
     password = request.form.get('password')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login_view'))
