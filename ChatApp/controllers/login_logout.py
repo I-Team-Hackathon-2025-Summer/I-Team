@@ -1,8 +1,7 @@
-from flask import Frask, request, redirect, render_template, session, flash,url_for
+from controllers import app
+from flask import request, redirect, render_template, session, flash,url_for
 
-app = Flask(__name__)
-
-#ログインページ
+#ログイン画面
 @app.route('/login', methods=['GET'])
 def login_view():
     return render_template('auth/login.html')
