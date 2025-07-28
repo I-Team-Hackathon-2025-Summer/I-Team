@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
+    <title>login</title>
+    <link rel="icon" href="/ChatApp/static/img/favicon.png" />
+    <link rel="stylesheet" href="../../static/css/auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="auth-wrapper">
+      <div class="auth-container">
+      <img 
+        class="auth-main-logo"
+        src="../../static/img/Tabi talk ロゴ.png" alt="ロゴ">
+        
+      <form class="auth-form" method="post">
+      <h1 class="auth-title">ログイン</h1>
+      <div class="auth-form-inputs">
+        <label for="email-input">メールアドレス</label><br>
+        <input 
+        type="text"
+        placeholder="メールアドレス"
+        name="email"
+        id="email-input">
+      </div>
+
+      <div class="auth-form-inputs">
+        <label for="pasword-input">パスワード</label><br>
+        <input 
+        type="text"
+        placeholder="パスワード"
+        name="password"
+        id="pasword-input">
+      </div>
+      <button class="auth-button" type="button" onclick="loction.href='http://127.0.0.1:55000/home'">ログイン</button>
+      <a class="switch-auth-mode" href="signup.html">新規登録はこちら</a>
+    </form>
+  </div>
+</div>
+  </body>
