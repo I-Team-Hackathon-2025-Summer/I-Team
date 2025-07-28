@@ -1,0 +1,8 @@
+{% extends 'error/base.html' %} {% block title %} error {% endblock %} {% block
+body %}
+    <img 
+     src="{{ url_for('stack', filename='image/Tabi talk ロゴ 1.png')}}"/>
+    <div class="error404">error404</div>
+    <img
+     src="{{ url_for('stack', filename='image/ハッカソンerror.png')}}"/>
+    <a class="error-button blue" href="{{url_for('home_view') }}">ホームに戻る</a>
