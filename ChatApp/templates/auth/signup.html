@@ -6,51 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
     <title>signup</title>
     <link rel="icon" href="/ChatApp/static/img/favicon.png" />
-    <link rel="stylesheet" href="../../static/css/auth.css">
+    <link rel="stylesheet" href="/ChatApp/static/css/auth.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
   </head>
 
+<!-- {% extends 'auth/base.html' %} {% block title %}
+<title>login</title>
+{% endblock %} {% block body %} -->
+
   <body>
     <div class="auth-wrapper">
-      <div class="auth-container">
       <img 
         class="auth-main-logo"
-        src="../../static/img/Tabi talk ロゴ.png" alt="ロゴ">
-        
-      <form class="auth-form" method="post">
+        src="/ChatApp/static/img/Tabi talk ロゴ.png" alt="ロゴ">
+    
       <h1 class="auth-title">ユーザー登録</h1>
 
-      <div class="auth-form-inputs">
-        <label for="email-input">ユーザー名</label><br>
-        <input 
-        type="text"
-        placeholder="ユーザー名"
-        name="name"
-        id="name-input">
-      </div>    
+      <form class="auth-form" method="post">
+        <div class="auth-form-name">
+          <label for="name-input">ユーザー名</label><br>
+            <input 
+            type="text"
+            placeholder="ユーザー名"
+            name="name">
+        </div>
 
-      <div class="auth-form-inputs">
-        <label for="email-input">メールアドレス</label><br>
-        <input 
-        type="text"
-        placeholder="メールアドレス"
-        name="email"
-        id="email-input">
-      </div>
+        <div class="auth-form-inputs">
+          <label for="email-input">メールアドレス</label><br>
+            <input 
+            type="text"
+            placeholder="メールアドレス"
+            name="email">
+        </div>
 
-      <div class="auth-form-inputs">
-        <label for="pasword-input">パスワード</label><br>
-        <input 
-        type="text"
-        placeholder="パスワード"
-        name="password"
-        id="pasword-input">
+        <div class="auth-form-inputs">
+          <label for="pasword-input">パスワード</label><br>
+            <input 
+            type="text"
+            placeholder="パスワード"
+            name="password">
+        </div>
+      </form>
+
+      <div class="auth-btnlink">
+        <button class="auth-button" type="button" onclick="loction.href='http://127.0.0.1:55000/home'">登録</button>
+        <a class="auth-link" href="login.html">戻る</a>
       </div>
-      <button class="auth-button" type="button" onclick="loction.href='http://127.0.0.1:55000/home'">登録</button>
-      <a class="switch-auth-mode" href="login.html">戻る</a>
-    </form>
-  </div>
-</div>
+    </div>
   </body>
