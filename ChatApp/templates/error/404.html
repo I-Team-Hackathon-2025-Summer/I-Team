@@ -1,9 +1,17 @@
-{% extends 'error/base.html' %} {% block title %} error {% endblock %} {% block
-body %}
-    <img 
-     src="{{ url_for('stack', filename='image/Tabi talk ロゴ 1.png')}}" alt="Tabi talkロゴ" class="tabi"/>
-    <div class="error404">error404</div>
-    <img
-     src="{{ url_for('stack', filename='image/ハッカソンerror.png')}}" alt="Tabi talkロゴ" class="error"/>
-    <a class="error-button blue" href="{{url_for('home_view') }}">ホーム</a>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>error404</title>
+    <link rel="stylesheet" href="../../static/css/error404.css" />
+    <link rel="icon" href="/ChatApp/static/img/favicon.png" />
+  </head>
+  <body>
+    <div class="container">
+     <img src="../../static/img/Tabi talk 1.svg" alt="Tabi talkロゴ" class="tabi"/>
+     <div class="error404">error404</div>
+     <a class="error-button blue" href="#">ホームに戻る</a>
+     <img src="../../static/img/error.png" alt="error画像" class="error"/>
+    </div> 
+  </body>
+</html>

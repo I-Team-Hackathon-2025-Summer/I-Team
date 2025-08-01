@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}{% endblock %}</title>
     <link rel="icon" href="../" /> <!--ファビコン設定-->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='gen/bundled.css') }}" <!--ビルド済みCSSを指定する-->
-    />
+    <link rel="stylesheet" href="error.css" /> <!--ビルド済みCSSを指定する-->
   </head>
   {% block body %} {% endblock %}
 </html>
