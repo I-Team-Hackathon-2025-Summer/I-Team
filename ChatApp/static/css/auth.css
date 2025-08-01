@@ -1,87 +1,95 @@
-.body {
-  background-size: cover;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.auth-wrapper {
-  max-width: 402px;
-  height: auto;
-  margin: 0 auto;
-  padding: 40px;
+body {
+  height: 100svh;
   display: flex;
+  justify-content: center;
   align-items: center;
+  overflow: hidden;
   font-family: "M PLUS 1p", sans-serif;
 }
 
-.auth-container {
+.auth-wrapper {
+  max-width: 430px;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  margin:0 auto;
+  gap: 16px;
 }
 
 .auth-main-logo{
   width: 70%;
-  margin: 1rem;
-}
-
-.auth-form {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1rem;
-  margin: 1rem 0;
+  padding: 16px;
 }
 
 .auth-title {
-  display: flex;
-  font-size: 1.5rem;
-  margin: 1rem;
+  font-size: 24px;
+  text-align: center;
 }
 
+.auth-form {
+  width: 70%;
+  min-height: 240px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+}  
+
 .auth-form-inputs {
-  margin: 1em;
+  display: block;
+  flex-direction: column;
 }
 
 .auth-form input {
+  width: 100%;
   background-color: #d9d9d9;
   border: solid 2px #d9d9d9;
   outline: none;
-  border-radius: 5px;
-  line-height: 2rem;
-  font-size: 1rem;
-  width: 15rem;
-  padding: 0.2rem 0.8rem;
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 8px 16px;
 }
 
 .auth-form input::placeholder {
   color: #a5a3a3;
 }
 
+.auth-btnlink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
 .auth-button {
+  width: 180px;
+  height: 40px;
   cursor:pointer;
-  width: 10em;
-  height: 2.5em;
   color:#FFFFFF;
   background-color: #1A8BA6;
   border: solid 2px #1A8BA6;
   outline: none;
-  border-radius: 5px;
-  margin: 1.5em;
+  border-radius: 6px;
   font-family: "M PLUS 1p", sans-serif;
-  font-size: 1.2em;
+  font-size: 18px;
 }
 
 .auth-button:hover{
-  opacity: 70%;
+  opacity: 0.7;
 }
 
-a {
+.auth-link {
   text-decoration: none;
   color: #000000; 
 }
 
-a:hover{
-  opacity: 70%;
+.auth-link:hover{
+  opacity: 0.7;
 }
