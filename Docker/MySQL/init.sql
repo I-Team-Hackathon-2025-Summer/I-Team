@@ -15,20 +15,20 @@ CREATE TABLE users (
 );
 
 CREATE TABLE areas(
-    --AUTO_INCREMENT：自動的に一意の値を割り当ててくれる
+    /*AUTO_INCREMENT：自動的に一意の値を割り当ててくれる*/
     area_id INT AUTO_INCREMENT PRIMARY KEY,
     channel_id INT NOT NULL,
     area_name VARCHAR(255) UNIQUE NOT NULL,
-    --channel_idがopen_channelsテーブルの主キーであるchannel_idカラムを参照するように指定
-    FOREIGN KEY (channel_id) REFERENCES open_channels(channel_id)
-)
+    /*channel_idがopen_channelsテーブルの主キーであるchannel_idカラムを参照するように指定
+    FOREIGN KEY (channel_id) REFERENCES open_channels(channel_id)*/
+);
 
 CREATE TABLE open_channels (
     channel_id INT AUTO_INCREMENT PRIMARY KEY,
-    area_id INT AUTO_INCREMENT PRIMARY KEY,
+    area_id INT,
     prefecture VARCHAR(255) NOT NULL,
-    --親テーブル(area)でレコードが削除されたら、子テーブル(open_channels)のレコードも削除されるように設定
-    FOREIGN KEY (area_id) REFERENCES areas(area_id) ON DELETE CASCADE
+    /*親テーブル(area)でレコードが削除されたら、子テーブル(open_channels)のレコードも削除されるように設定
+    FOREIGN KEY (area_id) REFERENCES areas(area_id) ON DELETE CASCADE*/
 );
 
 CREATE TABLE open_messages (
@@ -36,13 +36,13 @@ CREATE TABLE open_messages (
     user_id VARCHAR(255) NOT NULL,
     message TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    --親テーブル(users)でレコードが削除されたら、子テーブル(open_message)のレコードも削除されるように設定
+    /*親テーブル(users)でレコードが削除されたら、子テーブル(open_message)のレコードも削除されるように設定*/
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 INSERT INTO users(user_id, user_name, email, password) VALUES('970af84c-dd40-47ff-af23-282b72b7cca8','テスト','test@gmail.com','testtest123');
 
-INSERT INTO areas(area_id,channel_id, area_name) 
+/*INSERT INTO areas(area_id,channel_id, area_name) 
 VALUES
 (1, 1, '北海道/東北'),
 (2, 2, '関東'),
@@ -100,4 +100,4 @@ VALUES
 (7, 5, '大分'),
 (7, 6, '宮崎'),
 (7, 7, '鹿児島'),
-(7, 8, '沖縄');
+(7, 8, '沖縄');*/
