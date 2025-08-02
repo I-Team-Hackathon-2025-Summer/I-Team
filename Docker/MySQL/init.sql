@@ -18,7 +18,7 @@ CREATE TABLE areas(
     /*AUTO_INCREMENT：自動的に一意の値を割り当ててくれる*/
     area_id INT AUTO_INCREMENT PRIMARY KEY,
     channel_id INT NOT NULL,
-    area_name VARCHAR(255) UNIQUE NOT NULL,
+    area_name VARCHAR(255) UNIQUE NOT NULL
     /*channel_idがopen_channelsテーブルの主キーであるchannel_idカラムを参照するように指定
     FOREIGN KEY (channel_id) REFERENCES open_channels(channel_id)*/
 );
@@ -26,7 +26,7 @@ CREATE TABLE areas(
 CREATE TABLE open_channels (
     channel_id INT AUTO_INCREMENT PRIMARY KEY,
     area_id INT,
-    prefecture VARCHAR(255) NOT NULL,
+    prefecture VARCHAR(255) NOT NULL
     /*親テーブル(area)でレコードが削除されたら、子テーブル(open_channels)のレコードも削除されるように設定
     FOREIGN KEY (area_id) REFERENCES areas(area_id) ON DELETE CASCADE*/
 );
