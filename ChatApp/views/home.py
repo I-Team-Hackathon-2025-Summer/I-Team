@@ -3,7 +3,6 @@ from flask import request, redirect, render_template, session, flash,url_for, Bl
 import pymysql
 
 #Blueprintオブジェクト作成
-#Blueprintオブジェクト作成
 home = Blueprint('home', __name__, template_folder = 'templates', static_folder = 'static')
 
 

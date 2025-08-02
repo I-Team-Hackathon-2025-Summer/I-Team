@@ -8,7 +8,6 @@ from views.home import home
 app = Flask(__name__)
 
 #Blueprint登録
-#Blueprint登録
 app.register_blueprint(login_logout)
 app.register_blueprint(signup)
 app.register_blueprint(home)

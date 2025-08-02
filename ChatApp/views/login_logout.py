@@ -6,7 +6,6 @@ import pymysql
 from models.user import User
 
 #Blueprintオブジェクト作成
-#Blueprintオブジェクト作成
 login_logout = Blueprint('login_logout', __name__, template_folder = 'templates', static_folder = 'static')
 
 

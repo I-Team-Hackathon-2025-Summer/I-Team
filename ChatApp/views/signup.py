@@ -9,7 +9,6 @@ import os
 from models.user import User
 
 #Blueprintオブジェクト作成
-#Blueprintオブジェクト作成
 signup = Blueprint('signup', __name__, template_folder = 'templates', static_folder = 'static')
 
 # 定数定義
