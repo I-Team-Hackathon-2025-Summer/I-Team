@@ -1,0 +1,47 @@
+{% extends 'auth/base.html' %}
+{% block title %}
+<title>signup</title>
+{% endblock %}
+{% block body %}
+
+<div class="auth-wrapper">
+  <div class="auth-container">
+    <img 
+      class="auth-main-logo"
+      src="../../static/img/Tabi talk ロゴ.png" alt="ロゴ">
+      
+    <form class="auth-form" action="{{ url_for('signup.signup_process') }}" method="post">
+      <h1 class="auth-title">ユーザー登録</h1>
+
+      <div class="auth-form-inputs">
+        <label for="email-input">ユーザー名</label><br>
+        <input 
+        type="text"
+        placeholder="ユーザー名"
+        name="name"
+        id="name-input">
+      </div>    
+
+      <div class="auth-form-inputs">
+        <label for="email-input">メールアドレス</label><br>
+        <input 
+        type="text"
+        placeholder="メールアドレス"
+        name="email"
+        id="email-input">
+      </div>
+
+      <div class="auth-form-inputs">
+        <label for="pasword-input">パスワード</label><br>
+        <input 
+        type="text"
+        placeholder="パスワード"
+        name="password"
+        id="pasword-input">
+      </div>
+      <button class="auth-button" type="button" onclick="loction">登録</button>
+      <a class="switch-auth-mode" href="{{ url_for('login_logout.login_view') }}">戻る</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
