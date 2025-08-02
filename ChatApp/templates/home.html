@@ -4,23 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
-    <title>login</title>
+    <title>home</title>
     <link rel="icon" href="/ChatApp/static/img/favicon.png" />
-    <link rel="stylesheet" href="../../static/css/auth.css">
+    <link rel="stylesheet" href="/ChatApp/static/css/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
   </head>
 
+  
   <body>
-    <div class="container">
-      <div class="header">
-
+    <header class="header">
+      <div class="header-inner">
+        <a class="back-btn" onclick="history.back()"><img src="/ChatApp/static/img/戻る.png" alt="戻る"></a>
+        <img class="header-logo" src="/ChatApp/static/img/Tabi talk ロゴ.png" alt="ロゴ">
+        <span class="header-uname">{{user_name}}</span>
+        <a class="header-menu"><img src="/ChatApp/static/img/ハンバーガーメニュー.png" alt="メニュー"></a>
+      </header>
+      
+      <div class="container">
+        <main class="main">
+          <img class="main-img" src="/ChatApp/static/img/日本地図.png" alt="日本地図">
+          
+        </main>
       </div>
-
-
-      <div class="main">
-
-      </div>
-    </div>
   </body>

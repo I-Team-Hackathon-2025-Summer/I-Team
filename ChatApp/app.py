@@ -3,7 +3,6 @@ import re
 import uuid
 import hashlib
 
-from models import User
 
 EMAIL_PATTERN = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
 SESSION_DAYS = 30
