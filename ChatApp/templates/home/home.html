@@ -3,5 +3,20 @@
 <title>home</title>
 {% endblock %}
 {% block body %}
-<h1>Hello!ITEAM</h1>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <a class="back-btn" onclick="history.back()"><img src="/ChatApp/static/img/戻る.png" alt="戻る"></a>
+        <img class="header-logo" src="/ChatApp/static/img/Tabi talk ロゴ.png" alt="ロゴ">
+        <span class="header-uname">{{user_name}}</span>
+        <a class="header-menu"><img src="/ChatApp/static/img/ハンバーガーメニュー.png" alt="メニュー"></a>
+      </header>
+      
+      <div class="container">
+        <main class="main">
+          <img class="main-img" src="/ChatApp/static/img/日本地図.png" alt="日本地図">
+          
+        </main>
+      </div>
+  </body>
 {% endblock %}

@@ -2,35 +2,36 @@
 {% block title %}
 <title>login</title>
 {% endblock %}
-{% block body %}
-<div class="auth-wrapper">
-  <div class="auth-container">
-    <img 
-    class="auth-main-logo"
-    src="../../static/img/Tabi talk ロゴ.png" alt="ロゴ">
 
-    <form class="auth-form" method="post" action="{{ url_for('login_logout.login_process') }}">
-      <h1 class="auth-title">ログイン</h1>
-        <div class="auth-form-inputs">
-          <label for="email-input">メールアドレス</label><br>
+{% block body %}
+  <div class="auth-wrapper">
+    <img 
+      class="auth-main-logo"
+      src="../../static/img/Tabi talk ロゴ.png" alt="ロゴ">
+
+    <h1 class="auth-title">ログイン</h1>
+
+    <form class="auth-form" action="{{ url_for('login_logout.login_process') }}" method="post">
+      <div class="auth-form-inputs">
+        <label for="email-input">メールアドレス</label><br>
           <input 
           type="text"
           placeholder="メールアドレス"
-          name="email"
-          id="email-input">
-        </div>
+          name="email">
+      </div>
 
-        <div class="auth-form-inputs">
-          <label for="pasword-input">パスワード</label><br>
+      <div class="auth-form-inputs">
+        <label for="pasword-input">パスワード</label><br>
           <input 
           type="text"
           placeholder="パスワード"
-          name="password"
-          id="pasword-input">
-        </div>
-        <button class="auth-button" type="button">ログイン</button>
-        <a class="switch-auth-mode" href="{{ url_for('signup.signup_view') }}">新規登録はこちら</a>
+          name="password">
+      </div>
     </form>
+
+    <div class="auth-btnlink">
+      <button class="auth-button" type="submit">ログイン</button>
+      <a class="auth-link" href="{{ url_for('signup.signup_view') }}">新規登録はこちら</a>
+    </div>
   </div>
-</div>
-{% endblock %}
+{% endblock %} 
