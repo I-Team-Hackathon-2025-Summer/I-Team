@@ -2,7 +2,7 @@
 services:
   db:
     # コンテナ名をmysqlに設定
-    container_name: MySQL
+    container_name: Iteam_MySQL
     # MySQLのDockerfileをビルドする
     build:
       # ビルドコンテキストはカレントディレクトリ
@@ -39,7 +39,7 @@ services:
 
   app:
     # コンテナ名をFlaskに設定
-    container_name: Flask
+    container_name: Iteam_Flask
     # FlaskのDockerfileをビルドする
     build:
       # ビルドコンテキストはカレントディレクトリ
