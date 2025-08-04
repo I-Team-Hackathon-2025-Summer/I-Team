@@ -3,9 +3,12 @@ from views.login_logout import login_logout
 from views.signup import signup
 from views.home import home
 
-
+import uuid
+import os
 
 app = Flask(__name__)
+
+app.secret_key = os.getenv('SECRET_KEY', uuid.uuid4().hex)
 
 #Blueprint登録
 app.register_blueprint(login_logout)

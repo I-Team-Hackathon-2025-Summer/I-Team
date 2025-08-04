@@ -5,7 +5,6 @@ import hashlib
 import pymysql
 import uuid
 import re
-import os
 from models.user import User
 
 #Blueprintオブジェクト作成
@@ -13,8 +12,6 @@ signup = Blueprint('signup', __name__, template_folder = 'templates', static_fol
 
 # 定数定義
 EMAIL_PATTERN = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-
-signup.secret_key = os.getenv('SECRET_KEY', uuid.uuid4().hex)
 
 
 #ログイン画面
@@ -48,4 +45,4 @@ def signup_process():
             UserId = str(user_id)
             session['user_id'] = UserId
             return redirect(url_for('home.home_view'))
-    return redirect(url_for('signup_process'))
+    return redirect(url_for('signup.signup_process'))
