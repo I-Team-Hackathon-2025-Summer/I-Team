@@ -7,13 +7,13 @@
   <div class="auth-wrapper">
     <img 
       class="auth-main-logo"
-      src="../../static/img/Tabi talk ロゴ.png" alt="ロゴ">
+      src="{{ url_for('static', filename='img/Tabi talk ロゴ.png') }}" alt="ロゴ">
   
     <h1 class="auth-title">ユーザー登録</h1>
 
   <form class="auth-form" action="{{ url_for('signup.signup_process') }}" method="post">
-    <div class="auth-form-name">
-      <label for="name-input">ユーザー名</label><br>
+    <div class="auth-form-inputs">
+      <label for="name-input">ユーザー名</label>
         <input 
         type="text"
         placeholder="ユーザー名"
@@ -21,7 +21,7 @@
     </div>
 
     <div class="auth-form-inputs">
-      <label for="email-input">メールアドレス</label><br>
+      <label for="email-input">メールアドレス</label>
         <input 
         type="text"
         placeholder="メールアドレス"
@@ -29,7 +29,7 @@
     </div>
 
     <div class="auth-form-inputs">
-      <label for="pasword-input">パスワード</label><br>
+      <label for="pasword-input">パスワード</label>
         <input 
         type="text"
         placeholder="パスワード"
