@@ -18,7 +18,7 @@
         <input 
         type="text"
         placeholder="ユーザー名"
-        name="name"
+        name="user_name"
         id="name-input">
       </div>    
 
@@ -39,8 +39,18 @@
         name="password"
         id="pasword-input">
       </div>
-      <button class="auth-button" type="submit">登録</button>
-      <a class="switch-auth-mode" href="{{ url_for('login_logout.login_view') }}">戻る</a>
+
+      <div class="auth-button-container">
+          {% with messages = get_flashed_messages() %} {% if messages %}
+          <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %} {% endwith %}  
+        <button class="auth-button" type="submit">登録</button>
+        <a class="switch-auth-mode" href="{{ url_for('login_logout.login_view') }}">戻る</a>
+      </div>
     </form>
   </div>
 </div>

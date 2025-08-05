@@ -25,12 +25,12 @@ def signup_process():
     user_name = request.form.get('user_name')
     email = request.form.get('email')
     password = request.form.get('password')
-    passwordConfirmation = request.form.get('password-confirmation')
+    # passwordConfirmation = request.form.get('password-confirmation')
 
-    if user_name == '' or email =='' or password == '' or passwordConfirmation == '':
+    if user_name == '' or email =='' or password == '':
         flash('空のフォームがあるようです')
-    elif password != passwordConfirmation:
-        flash('二つのパスワードの値が違っています')
+    # elif password != passwordConfirmation:
+    #     flash('二つのパスワードの値が違っています')
     elif re.match(EMAIL_PATTERN, email) is None:
         flash('正しいメールアドレスの形式ではありません')
     else:

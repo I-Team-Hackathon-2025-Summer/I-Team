@@ -28,6 +28,7 @@ def login_process():
             flash('このユーザーは存在しません')
         else:
             hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
+            print(hashPassword)
             if hashPassword != user["password"]:
                 flash('パスワードが間違っています！')
             else:
