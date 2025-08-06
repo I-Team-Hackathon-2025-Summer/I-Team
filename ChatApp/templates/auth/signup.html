@@ -11,35 +11,46 @@
   
     <h1 class="auth-title">ユーザー登録</h1>
 
-  <form class="auth-form" action="{{ url_for('signup.signup_process') }}" method="post">
-    <div class="auth-form-inputs">
-      <label for="name-input">ユーザー名</label>
-        <input 
-        type="text"
-        placeholder="ユーザー名"
-        name="name">
-    </div>
+    <form class="auth-form" action="{{ url_for('signup.signup_process') }}" method="post">
+      <div class="auth-form-inputs">
+        <label for="name-input">ユーザー名</label>
+          <input 
+          type="text"
+          placeholder="ユーザー名"
+          name="user_name"
+          id="name-input">
+        </div>    
 
-    <div class="auth-form-inputs">
-      <label for="email-input">メールアドレス</label>
-        <input 
-        type="text"
-        placeholder="メールアドレス"
-        name="email">
-    </div>
+      <div class="auth-form-inputs">
+        <label for="email-input">メールアドレス</label>
+          <input 
+          type="text"
+          placeholder="メールアドレス"
+          name="email">
+      </div>
 
-    <div class="auth-form-inputs">
-      <label for="pasword-input">パスワード</label>
-        <input 
-        type="text"
-        placeholder="パスワード"
-        name="password">
-    </div>
-  </form>
+      <div class="auth-form-inputs">
+        <label for="pasword-input">パスワード</label>
+          <input 
+          type="text"
+          placeholder="パスワード"
+          name="password">
+      </div>
 
-  <div class="auth-btnlink">
-    <button class="auth-button" type="submit">登録</button>
-    <a class="auth-link" href="{{ url_for('login_logout.login_view') }}">戻る</a>
+      <div class="auth-btnlink">
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}  
+        <button class="auth-button" type="submit">登録</button>
+        <a class="auth-link" href="{{ url_for('login_logout.login_view') }}">戻る</a>
+            name="password"
+            id="pasword-input">
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %} 

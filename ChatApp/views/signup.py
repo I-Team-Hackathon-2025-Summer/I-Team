@@ -5,7 +5,6 @@ import hashlib
 import pymysql
 import uuid
 import re
-import os
 from models.user import User
 
 #Blueprintオブジェクト作成
@@ -13,8 +12,6 @@ signup = Blueprint('signup', __name__, template_folder = 'templates', static_fol
 
 # 定数定義
 EMAIL_PATTERN = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-
-signup.secret_key = os.getenv('SECRET_KEY', uuid.uuid4().hex)
 
 
 #ログイン画面
@@ -28,12 +25,12 @@ def signup_process():
     user_name = request.form.get('user_name')
     email = request.form.get('email')
     password = request.form.get('password')
-    passwordConfirmation = request.form.get('password-confirmation')
+    # passwordConfirmation = request.form.get('password-confirmation')
 
-    if user_name == '' or email =='' or password == '' or passwordConfirmation == '':
+    if user_name == '' or email =='' or password == '':
         flash('空のフォームがあるようです')
-    elif password != passwordConfirmation:
-        flash('二つのパスワードの値が違っています')
+    # elif password != passwordConfirmation:
+    #     flash('二つのパスワードの値が違っています')
     elif re.match(EMAIL_PATTERN, email) is None:
         flash('正しいメールアドレスの形式ではありません')
     else:
@@ -48,4 +45,4 @@ def signup_process():
             UserId = str(user_id)
             session['user_id'] = UserId
             return redirect(url_for('home.home_view'))
-    return redirect(url_for('signup_process'))
+    return redirect(url_for('signup.signup_process'))

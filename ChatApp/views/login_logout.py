@@ -28,14 +28,15 @@ def login_process():
             flash('このユーザーは存在しません')
         else:
             hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
+            print(hashPassword)
             if hashPassword != user["password"]:
                 flash('パスワードが間違っています！')
             else:
                 session['user_id'] = user["user_id"]
-                return redirect(url_for('home_view'))
-    return redirect(url_for('login_view'))    
+                return redirect(url_for('home.home_view'))
+    return redirect(url_for('login_logout.login_view'))    
 
 @login_logout.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('login_view'))
+    return redirect(url_for('login_logout.login_view'))

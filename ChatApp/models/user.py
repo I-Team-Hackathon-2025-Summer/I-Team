@@ -15,6 +15,7 @@ class User:
        conn = db_pool.get_conn()
        try:
             # コネクションからカーソル（操作用のオブジェクト）を取得する
+            # cursorはデータの接続やクエリ文を実行するためのインターフェイスの役割をしてる
            with conn.cursor() as cur:
                sql = "INSERT INTO users (user_id, user_name, email, password) VALUES (%s, %s, %s, %s);"
                # SQLを実行し、パラメータ（uid, name, email, password）を埋め込む
