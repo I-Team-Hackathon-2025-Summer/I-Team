@@ -27,9 +27,9 @@ def login_process():
         if user is None:
             flash('このユーザーは存在しません')
         else:
-            hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
-            print(hashPassword)
-            if hashPassword != user["password"]:
+            # hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
+            # print(hashPassword)
+            if password != user["password"]:
                 flash('パスワードが間違っています！')
             else:
                 session['user_id'] = user["user_id"]
