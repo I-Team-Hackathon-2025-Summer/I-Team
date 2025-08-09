@@ -2,18 +2,24 @@ from flask import Flask, render_template
 from views.login_logout import login_logout
 from views.signup import signup
 from views.home import home
+from views.channels import channels
+from views.chat import chat
 
 import uuid
 import os
 
 app = Flask(__name__)
 
+#SECRET_KEYはセッション情報(Cookie)を暗号化する際に使用する秘密鍵(文字列)
+#Cookieはユーザのログイン情報が記録されたデータのことで、クライアント側(ブラウザや端末)に直接保存されるもの
 app.secret_key = os.getenv('SECRET_KEY', uuid.uuid4().hex)
 
 #Blueprint登録
 app.register_blueprint(login_logout)
 app.register_blueprint(signup)
 app.register_blueprint(home)
+app.register_blueprint(channels)
+app.register_blueprint(chat)
 
 
 @app.route('/', methods=['GET'])

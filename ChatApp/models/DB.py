@@ -2,7 +2,7 @@
 #環境変数の操作ができる
 import os
 import pymysql
-#これ何？
+#pymysqlpool.poolはPyMySQLを使用する際にDB接続を効率的に管理する為の便利なツール
 from pymysqlpool.pool import Pool
 
 class DB:
