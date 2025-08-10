@@ -31,7 +31,7 @@ body {
   justify-content: flex-end;
   align-items: center;
   font-size: 20px;
-  background-color: #FFFFFF;
+  background-color: #f6f9f3;
 }
 
 .header-inner {
@@ -41,7 +41,7 @@ body {
   align-items: center;
   margin-bottom: 12px;
   gap: 12px;
-  background-color: #FFFFFF;
+  background-color: #f6f9f3;
 }
 
 .header-uname {
@@ -52,7 +52,7 @@ body {
 .header img {
   height: 48px;
   width: auto;
-  background-color: #FFFFFF;
+  background-color: #f6f9f3;
 }
 
 /* ======== メインコンテンツ ======== */
@@ -82,17 +82,19 @@ main{
 .map-img {
   width: 100%;
   height: auto;
+  margin-bottom: 10%;
 }
 
 .main-img a {
   position: absolute;
   display: block;
+  cursor: pointer;
 }
 
 #hokkaido-tohoku  { top: 14%; left: 66%; }
-#kanto            { top: 45%; left: 66%; }
-#chubu            { top: 36%; left: 40%; }
-#kinki            { top: 58%; left: 52%; }
-#chugoku          { top: 45%; left: 8%; }
-#shikoku          { top: 70%; left: 18%; }
-#kyushu-okinawa   { top: 78%; left: 8%; }
+#kanto            { top: 41%; left: 64%; }
+#chubu            { top: 34%; left: 38%; }
+#kinki            { top: 54%; left: 38%; }
+#chugoku          { top: 41%; left: 8%; }
+#shikoku          { top: 62%; left: 18%; }
+#kyushu-okinawa   { top: 64%; left: 6%; }
