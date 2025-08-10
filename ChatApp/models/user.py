@@ -12,6 +12,9 @@ db_pool = DB.init_db_pool()
 # ユーザークラス
 class User:
    @classmethod
+   #clsはPythonのクラスメソッドにおいて、クラス自体を指す特別な引数
+   #clsの役割①：クラスを使いたい時インスタス化をしなくていい(new User的なのが要らない)
+   #役割②：使い回しができる。同クラス内の他関数にclsを使えば、clsを介してそのクラスのクラス変数やクラスメソッドにアクセスできる
    def create(cls, user_id, user_name, email, password):
        #DB接続プールからコネクションを取得する
        conn = db_pool.get_conn()

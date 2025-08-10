@@ -8,5 +8,8 @@ channels = Blueprint('channels', __name__, template_folder = 'templates', static
 
 #チャンネル画面(都道府県選択画面)
 @channels.route('/home/<area_id>/channels', methods=['GET'])
-def channels_view():
+def channels_view(area_id):
+  user_id = session.get('user_id')
+  if user_id is None:
+      return redirect(url_for('login_logout.login_view'))
   return render_template('channels.html')

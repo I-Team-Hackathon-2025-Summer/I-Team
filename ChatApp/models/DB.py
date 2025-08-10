@@ -8,7 +8,9 @@ from pymysqlpool.pool import Pool
 class DB:
   #クラスメソッドを定義するためのデコレータ(特別な関数)
   @classmethod
-  #引数のclsは何してる？
+  #clsはPythonのクラスメソッドにおいて、クラス自体を指す特別な引数
+  #clsの役割①：クラスを使いたい時インスタス化をしなくていい(new User的なのが要らない)
+  #役割②：使い回しができる。同クラス内の他関数にclsを使えば、clsを介してそのクラスのクラス変数やクラスメソッドにアクセスできる
   def init_db_pool(cls):
        pool = Pool(
            # データベースホスト

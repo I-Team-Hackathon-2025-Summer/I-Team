@@ -1,6 +1,7 @@
 from flask import request, redirect, render_template, session, flash,url_for, Blueprint
 #MySQLの一般的な機能
 import pymysql
+from models.channels import Channel
 
 #Blueprintオブジェクト作成
 home = Blueprint('home', __name__, template_folder = 'templates', static_folder = 'static')
@@ -9,4 +10,11 @@ home = Blueprint('home', __name__, template_folder = 'templates', static_folder 
 #ホーム画面(地方選択画面)
 @home.route('/home', methods=['GET'])
 def home_view():
-  return render_template('home/home.html')
+  user_id = session.get('user_id')
+  if user_id is None:
+      return redirect(url_for('login_logout.login_view'))
+  else:
+     areas = Channel.areas_get_all()
+     #reverseはリストの要素の順序を逆にする
+     #areas.reverse()
+  return render_template('home/home.html', areas=areas)
