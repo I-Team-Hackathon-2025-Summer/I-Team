@@ -21,7 +21,7 @@ CREATE TABLE areas(
     area_name VARCHAR(255) UNIQUE NOT NULL,
     --channel_idがopen_channelsテーブルの主キーであるchannel_idカラムを参照するように指定
     FOREIGN KEY (channel_id) REFERENCES open_channels(channel_id)
-)
+);
 
 CREATE TABLE open_channels (
     channel_id INT AUTO_INCREMENT PRIMARY KEY,

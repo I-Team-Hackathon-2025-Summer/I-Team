@@ -1,4 +1,4 @@
-from DB import DB
+from models.DB import DB
 import pymysql
 from flask import abort
 
@@ -6,12 +6,12 @@ db_pool = DB.init_db_pool()
 
 class User:
   @classmethod
-  def create(cls, uid, name, email, password):
+  def create(cls, user_id, name, email, password):
       conn = db_pool.get_conn()
       try:
          with conn.cursor() as cur:
-            sql = "INSERT INTO users (uid, user_name, email, password) VALUES (%s, %s, %s, %s);"
-            cur.execute(sql, (uid, name, email, password))
+            sql = "INSERT INTO users (user_id, user_name, email, password) VALUES (%s, %s, %s, %s);"
+            cur.execute(sql, (user_id, name, email, password))
             conn.commit()
       except pymysql.Error as e:
          print(f'エラーが発生しています：{e}')
@@ -25,8 +25,8 @@ class User:
       try:
               with conn.cursor() as cur:
                   sql = "SELECT * FROM users WHERE email=%s"
-                  cur.excute(sql, (email))
-                  user = cur.fetchone()
+                  cur.execute(sql, (email))
+                  user = cur.fetchone() 
               return user
       except pymysql.Error as e:
           print(f'エラーが発生しています：{e}')

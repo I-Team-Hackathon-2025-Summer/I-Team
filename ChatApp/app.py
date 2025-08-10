@@ -1,45 +1,24 @@
-from flask import Flask, render_template, request, flash, redirect, url_for, session
-import re
+from flask import Flask, render_template
+#from views.login_logout import login_logout
+from views.signup import signup
+from views.home import home
+
 import uuid
-import hashlib
-
-from models import User
-
-EMAIL_PATTERN = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-SESSION_DAYS = 30
+import os
 
 app = Flask(__name__)
 
-@app.route('/signup', methods=['GET'])
-def sign_view():
-    return render_template('auth/signup.html')
+app.secret_key = os.getenv('SECRET_KEY', uuid.uuid4().hex)
 
-@app.route('/signup', methods=['POST'])
-def signup_process():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    password = request.form.get('password')
-    passwordConfirmation = request.form.get('password-confirmation')
+#app.register_blueprint(login_logout)
+app.register_blueprint(signup)
+app.register_blueprint(home)
 
-    if name == '' or email == '' or password == '' or passwordConfirmation == '':
-        flash('空のフォームがあります')
-    elif password != passwordConfirmation:
-        flash('二つのパスワードの値が違います')
-    elif re.match(EMAIL_PATTERN, email) is None:
-        flash('正しいメールアドレスの形式ではありません')
-    else:
-        uid = uuid.uuid4()
-        password = hashlib.sha256(password.encode('utf-8')).hexdigest()
-        registered_user = User.find_by_email(email)
-
-        if registered_user != None:
-            flash('既に登録されています')
-        else:
-            User.create(uid, name, email, password)
-            UserId = str(uid)
-            session['uid'] = UserId
-            return redirect(url_for('home_view'))
-    return redirect(url_for('signup_process'))
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('auth/login.html')
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", debug=True)     
+    app.run(host="0.0.0.0", debug=True) 
+
+
