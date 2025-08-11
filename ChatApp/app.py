@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, redirect, url_for
 from views.login_logout import login_logout
 from views.signup import signup
 from views.home import home
@@ -18,7 +18,10 @@ app.register_blueprint(home)
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('auth/login.html')
+    user_id = session.get('user_id')
+    if user_id is None:
+        return redirect(url_for('login_logout.login_view'))
+    return redirect(url_for('home.home_view'))
 
 #if __name__ == '__main__':は、Pythonスクリプトが直接実行されたときに、そのブロック内のコードを実行するための条件文
 #スクリプトは、特定のタスクを自動化するために書かれた一連の命令やコードのこと
