@@ -49,12 +49,12 @@ class User:
    def find_by_email(cls, email):
        conn = db_pool.get_conn()
        try:
-               with conn.cursor() as cur:
-                   sql = "SELECT * FROM users WHERE email=%s;"
-                   cur.execute(sql, (email,))
-                   #fetchoneは実行したSQLクエリの結果から1行だけを取得するために使う
-                   user = cur.fetchone()
-               return user
+            with conn.cursor() as cur:
+                sql = "SELECT * FROM users WHERE email=%s;"
+                cur.execute(sql, (email,))
+                #fetchoneは実行したSQLクエリの結果から1行だけを取得するために使う
+                user = cur.fetchone()
+            return user
        except pymysql.Error as e:
            print(f'エラーが発生しています：{e}')
            abort(500)

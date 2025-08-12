@@ -1,4 +1,3 @@
-
 DROP DATABASE tabitalk;
 DROP USER 'Iteam';
 

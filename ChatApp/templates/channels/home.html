@@ -1,0 +1,32 @@
+{% extends 'channels/base.html' %}
+{% block title %}
+<title>home</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="home-wrapper">
+  {% include 'channels/header.html' %}
+  <main>
+    <div class="main-contents">
+      <div class="main-img">
+        <img class="map-img" src="{{ url_for('static', filename='img/日本地図.png') }}" alt="背景画像">
+          <a id="hokkaido-tohoku" href="/home/{{areas.area_id}}/channels">
+            <img src="{{ url_for('static', filename='img/北海道・東北.png') }}" alt="北海道・東北"></a>
+          <a id="kanto" href="{{ url_for('login_logout.login_view') }}">
+            <img src="{{ url_for('static', filename='img/関東.png') }}" alt="関東"></a>
+          <a id="chubu" href="{{ url_for('login_logout.login_view') }}">
+            <img src="{{ url_for('static', filename='img/中部.png') }}" alt="中部"></a>
+          <a id="kinki" href="{{ url_for('login_logout.login_view') }}">
+            <img src="{{ url_for('static', filename='img/近畿.png') }}" alt="近畿"></a>
+          <a id="chugoku" href="{{ url_for('login_logout.login_view') }}">
+            <img src="{{ url_for('static', filename='img/中国.png') }}" alt="中国"></a>
+          <a id="shikoku" href="{{ url_for('login_logout.login_view') }}">
+            <img src="{{ url_for('static', filename='img/四国.png') }}" alt="四国"></a>
+          <a id="kyushu-okinawa" href="{{ url_for('login_logout.login_view') }}">
+            <img src="{{ url_for('static', filename='img/九州・沖縄.png') }}" alt="九州・沖縄"></a>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-from flask import request, redirect, render_template, session, flash,url_for, Blueprint
+from flask import redirect, render_template, session,url_for, Blueprint
 #MySQLの一般的な機能
 import pymysql
 from models.channels import Channel
@@ -17,4 +17,4 @@ def home_view():
      areas = Channel.areas_get_all()
      #reverseはリストの要素の順序を逆にする
      #areas.reverse()
-  return render_template('home/home.html', areas=areas)
+  return render_template('channels/home.html', areas=areas)
