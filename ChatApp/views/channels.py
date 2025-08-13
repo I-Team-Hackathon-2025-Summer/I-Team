@@ -14,5 +14,5 @@ def channels_view(area_id):
   if user_id is None:
       return redirect(url_for('login_logout.login_view'))
   else:
-     channels = Channel.channels_get_all()
+     channels = Channel.channels_get_all(area_id=area_id)
   return render_template('channels/channels.html', channels=channels)

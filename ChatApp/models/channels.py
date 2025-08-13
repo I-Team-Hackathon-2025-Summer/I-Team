@@ -17,6 +17,7 @@ class Channel:
                 sql = "SELECT * FROM areas;"
                 cur.execute(sql)
                 #fetchallはSQLクエリの結果からすべての行を取得する
+                #fetconeでもOK
                 areas = cur.fetchall()
                 return areas
         except pymysql.Error as e:
@@ -30,7 +31,7 @@ class Channel:
         conn = db_pool.get_conn()
         try:
             with conn.cursor() as cur:
-                sql = "SELECT * FROM channels WHERE area_id=%s;"
+                sql = "SELECT * FROM open_channels WHERE area_id=%s;"
                 cur.execute(sql, (area_id,))
                 #fetchallはSQLクエリの結果からすべての行を取得する
                 channels = cur.fetchall()

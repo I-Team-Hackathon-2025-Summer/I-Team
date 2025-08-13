@@ -4,5 +4,7 @@
 {% endblock %}
 
 {% block body %}
-<h1>channels</h1>
+  {% for channels in channels %}
+    <h1>{{ channels.prefecture }}</h1>
+  {% endfor %} 
 {% endblock %}
