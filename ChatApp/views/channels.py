@@ -1,43 +1,18 @@
-from flask import abort
+from flask import request, redirect, render_template, session, flash,url_for, Blueprint
+#MySQLの一般的な機能
 import pymysql
-from models.DB import DB
+from models.channels import Channel
+
+#Blueprintオブジェクト作成
+channels = Blueprint('channels', __name__, template_folder = 'templates', static_folder = 'static')
 
 
-# 初期起動時にコネクションプールを作成し接続を確立
-db_pool = DB.init_db_pool()
-
-# チャンネルクラス(エリア＆チャンネル)
-class Channel:
-    @classmethod
-   #エリア表示
-    def areas_get_all(cls):
-        conn = db_pool.get_conn()
-        try:
-            with conn.cursor() as cur:
-                sql = "SELECT * FROM areas;"
-                cur.execute(sql)
-                #fetchallはSQLクエリの結果からすべての行を取得する
-                #fetconeでもOK
-                areas = cur.fetchall()
-                return areas
-        except pymysql.Error as e:
-            print(f'エラーが発生しています：{e}')
-            abort(500)
-        finally:
-            db_pool.release(conn)
-
-    @classmethod
-    def channels_get_all(cls, area_id):
-        conn = db_pool.get_conn()
-        try:
-            with conn.cursor() as cur:
-                sql = "SELECT * FROM open_channels WHERE area_id=%s;"
-                cur.execute(sql, (area_id,))
-                #fetchallはSQLクエリの結果からすべての行を取得する
-                channels = cur.fetchall()
-                return channels
-        except pymysql.Error as e:
-            print(f'エラーが発生しています：{e}')
-            abort(500)
-        finally:
-            db_pool.release(conn)
+#チャンネル画面(都道府県選択画面)
+@channels.route('/home/<area_id>/channels', methods=['GET'])
+def channels_view(area_id):
+  user_id = session.get('user_id')
+  if user_id is None:
+      return redirect(url_for('login_logout.login_view'))
+  else:
+     channels = Channel.channels_get_all(area_id=area_id)
+  return render_template('channels/channels.html', channels=channels)

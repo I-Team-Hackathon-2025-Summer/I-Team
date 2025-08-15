@@ -9,4 +9,4 @@ home = Blueprint('home', __name__, template_folder = 'templates', static_folder 
 #ホーム画面(地方選択画面)
 @home.route('/home', methods=['GET'])
 def home_view():
-  return render_template('home/home.html')
+  return render_template('channels/home.html')

@@ -1,56 +1,23 @@
 {% extends 'channels/base.html' %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/channels.css') }}">
+{% endblock %}
 {% block title %}
 <title>channels</title>
-{% endblock %}
-{% block stylesheet %}
-<link rel="stylesheet" href="static/css/home.css">
 {% endblock %}
 
 {% block body %}
 
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
-    {% block title %}{% endblock %}
-    <title>channels</title>
-    <link rel="icon" href="static/img/favicon.png" />
-    {% block stylesheet %}{% endblock %}
-     <link rel="stylesheet" href="../../static/css/channels.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-  </head>
-<body>
-
 <div class="home-wrapper">
   {% include 'channels/header.html' %}
-
-        <header class="header">
-        <div class="header-inner">
-          <a class="back-btn" onclick="history.back()"><img src="{{ url_for('static', filename='img/戻る.png') }}" alt="戻る"></a>
-          <img class="header-logo" src="{{ url_for('static', filename='img/Tabitalkロゴ.png') }}" alt="ロゴ">
-          <span class="header-uname">{{user_name}}name</span>
-          <!-- ’name’は表示確認用のダミーテキスト -->
-          <a class="header-menu" href="{{ url_for('login_logout.login_view') }}"><img src="{{ url_for('static', filename='img/ハンバーガーメニュー.png') }}" alt="メニュー"></a>
-          <!-- URLはダミー -->
-        </div>
-      </header>
-
   <main>
     <div class="main-contents">
       <div class="area-name">北海道・東北</div>
-        <ul class="prefectures">
-          <li><a href="{{ url_for('login_logout.login_view') }}">北海道</a></li>
-          <li><a href="{{ url_for('login_logout.login_view') }}">青森</a></li>
-          <li><a href="{{ url_for('login_logout.login_view') }}">岩手</a></li>
-          <li><a href="{{ url_for('login_logout.login_view') }}">宮城</a></li>
-          <li><a href="{{ url_for('login_logout.login_view') }}">秋田</a></li>
-          <li><a href="{{ url_for('login_logout.login_view') }}">山形</a></li>
-          <li><a href="{{ url_for('login_logout.login_view') }}">福島</a></li>
-        </ul>
+        <div class="prefectures">
+          {% for channels in channels %}
+          <a href="">{{ channels.prefecture }}</a>
+          {% endfor %}
+        </div>
     </div>
   </main>
 </div>
