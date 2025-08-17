@@ -3,6 +3,7 @@ from flask import request, redirect, render_template, session, flash, url_for, B
 import hashlib
 #MySQLの一般的な機能
 import pymysql
+#uuidモジュールはPythonに組み込まれている標準ライブラリの一部
 import uuid
 import re
 from models.user import User
@@ -34,6 +35,8 @@ def signup_process():
     elif re.match(EMAIL_PATTERN, email) is None:
         flash('正しいメールアドレスの形式ではありません')
     else:
+        #uuid4は衝突の可能性が非常に低いかつランダムに生成されたUUID（Universally Unique Identifier）を作成
+        #一意に識別するための128ビットの値
         user_id = uuid.uuid4()
         password = hashlib.sha256(password.encode('utf-8')).hexdigest()
         registered_user = User.find_by_email(email)

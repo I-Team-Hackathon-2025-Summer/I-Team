@@ -1,6 +1,7 @@
 #OS（オペレーティングシステム）との対話を可能にするための標準ライブラリ
 #環境変数の操作ができる
 import os
+#DBと接続するために使うドライバー
 import pymysql
 #pymysqlpool.poolはPyMySQLを使用する際にDB接続を効率的に管理する為の便利なツール
 from pymysqlpool.pool import Pool
