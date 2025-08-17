@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -25,7 +26,7 @@ body {
 
 .header {
   width: 100%;
-  height: 120px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -57,7 +58,6 @@ body {
 
 /* ======== メインコンテンツ ======== */
 
-
 main{
   flex: 1;
   display: flex;
@@ -74,27 +74,123 @@ main{
   align-items: center;
 }
 
-.main-img {
-  position: relative;  /* リンク画像の配置基準値 */
-  width: 90%;
+.main {
+  position: relative;  /* リンクの配置基準値 */
+  width: 94%;
 }
 
 .map-img {
   width: 100%;
   height: auto;
-  margin-bottom: 10%;
 }
 
-.main-img a {
+.main a {
   position: absolute;
-  display: block;
+  text-decoration: none;
   cursor: pointer;
 }
 
-#hokkaido-tohoku  { top: 14%; left: 66%; }
-#kanto            { top: 41%; left: 64%; }
-#chubu            { top: 34%; left: 38%; }
-#kinki            { top: 54%; left: 38%; }
-#chugoku          { top: 41%; left: 8%; }
-#shikoku          { top: 62%; left: 18%; }
-#kyushu-okinawa   { top: 64%; left: 6%; }
+/* ======== 吹き出しリンク ======== */
+
+/* 全吹き出し共通 */
+.balloon {
+  position: relative;
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+  padding: 4px 8px;
+  border: 3px solid #FFFFFF;
+  background-color: transparent;
+  color: #FFFFFF;
+}
+
+/* 左吹き出し */
+.balloon-left::after {
+  position: absolute;
+  content: "";                 /* ::afterを発生させるための空プロパティ */
+  top: 70%;                    /* しっぽ高さ */
+  left: 0;                     /* しっぽ開始位置 */
+  transform: translateX(-100%) skewY(-12deg);  /* しっぽをX軸（水平）方向に要素外に出す＋Y軸に傾ける */
+  border-top:4px solid transparent;      /* 太さ調整（三角の半分）＋上辺透明化 */
+  border-bottom:4px solid transparent;      /* 太さ調整（三角の半分）＋下辺透明化 */
+  border-right: 50px solid #FFFFFF;            /* しっぽ長さと色 */
+}
+
+/* 上吹き出し */
+.balloon-top::after {
+  position: absolute;
+  content: ""; 
+  top: 0; 
+  left: 0; 
+  transform: translateY(-100%) skewX(24deg);
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-bottom:36px solid #FFFFFF;
+}
+
+/* 下吹き出し */
+.balloon-bottom::after {
+  position: absolute;
+  content: ""; 
+  bottom: 0; 
+  left: 70%; 
+  transform: translateY(100%) skewX(-20deg);
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:40px solid #FFFFFF;
+}
+
+/* 上＋下吹き出し -上部分 */
+.balloon-top-bottom::before {
+  position: absolute;
+  content: ""; 
+  top: 0; 
+  left: 70%; 
+  transform: translateY(-100%) skewX(10deg);
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-bottom:50px solid #FFFFFF;
+}
+
+/* 上＋下吹き出し -下部分 */
+.balloon-top-bottom::after {
+  position: absolute;
+  content: ""; 
+  bottom: 0; 
+  left: 10%; 
+  transform: translateY(100%) skewX(-28deg);
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:24px solid #FFFFFF;}
+
+  /* 上＋右吹き出し -上部分 */
+.balloon-top-right::before {
+  position: absolute;
+  content: ""; 
+  top: 0; 
+  left: 12%; 
+  transform: translateY(-100%) skewX(10deg);
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-bottom:80px solid #FFFFFF;
+}
+
+  /* 上＋右吹き出し -右部分 */
+.balloon-top-right::after {
+  position: absolute;
+  content: "";
+  top: 30%;
+  right: 0;
+  transform: translateX(100%) skewY(-8deg);
+  border-top:4px solid transparent;
+  border-bottom:4px solid transparent;
+  border-left: 60px solid #FFFFFF;
+}
+
+#hokkaido-tohoku  { top: 22%; left: 66%; }
+#kanto            { top: 44%; left: 75%; }
+#chubu            { top: 34%; left: 40%; }
+#kinki            { top: 64%; left: 40%; }
+#chugoku          { top: 44%; left: 8%;  }
+#shikoku          { top: 74%; left: 20%; }
+#kyushu-okinawa   { top: 88%; left: 4%;  }
