@@ -1,5 +1,10 @@
 
-{% extends 'auth/base.html' %}
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
 {% block title %}
 <title>signup</title>
 {% endblock %}
@@ -54,4 +59,4 @@
     </form>
   </div>
 </div>
-{% endblock %} 
+{% endblock %}
