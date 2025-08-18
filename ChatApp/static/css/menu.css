@@ -15,10 +15,11 @@ body {
     position: relative;
     align-items: center;
     max-width: 100%;
-    height: 67px;
+    height: 120px;
     display: flex;
     justify-content: space-between;
-    padding: 56px 16px;
+    padding: 16px;
+    box-sizing: border-box;
 }
 
 .hnberger {
@@ -27,44 +28,48 @@ body {
 }
 
 .header-img {
-    width: 147px;
-    height: auto;
+    width: 30vw;
+    max-width: 172px;
 
 }
 
 .user {
-    font-size: 40px;
+    font-size: 2vh;
+    white-space: nowrap;
 }
+
 .drawer_nav {
   display: flex;
+  flex-direction: column;
+  text-align: center;
   height: 100vh;
   background-color: #C0E6EA;
   position: fixed;
   top: 115px;
   right: -100%;
   left: auto;
-  width: 100%;
+  width: 75%;
   transition: right 0.5s ease;
 }
 
-.nav-left {
-  background-color: #7dd3dc;
-  width: 25%; 
-  height: 100%;
-}
+
 
 .nav-right {
   width: 75%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: 0;
 }
 
 #drawer-toggle:checked ~ header .drawer_nav {
   right: 0;
 }
 
-#drawer-toggle:checked + .drawer_btn .hnberger {
+#drawer-toggle:checked + header .drawer_btn .hnberger {
     display: none;
 }
 
@@ -76,9 +81,9 @@ body {
     display: none;
 }
 
-#drawer-toggle:checked + .drawer_btn .back_png {
+#drawer-toggle:checked ~ header .drawer_btn .back_png {
     display: inline;
-    height: 40px;
+    height: 48px;
     width: auto;
 }
 
@@ -125,5 +130,5 @@ body {
 .nav-right a {
   text-decoration: none;
   color: #0F5A5D;
-  font-size: 32px;
+  font-size: 6vw;
 }

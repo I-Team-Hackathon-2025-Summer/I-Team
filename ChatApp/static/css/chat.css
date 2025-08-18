@@ -1,61 +1,75 @@
-.back {
+body {
+  margin: 0;
+  background-color: #7dd3dc;
+  font-size: 16px;
+}
+
+.back, .hnberger {
     cursor: pointer;
-    width: 56px;
+    max-width: 56px;
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
 }
 
 header {
-    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: white;
-    padding: 24px 16px;
+    padding: 8px 16px;
+  
+}
+
+.header-left, .header-right {
+    align-items: center;
+    flex: 0 0 auto;
+    display: flex; 
 }
 
 .header-contener {
-    position: relative;
-    align-items: center;
-    max-width: 100%;
-    height: 67px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%
 }
 
-.hnberger {
-    height: 40px;
-    width: auto;
+.header-center {
+  flex: 1;
+  text-align: center;
 }
 
 .header-img {
     display: none;
-    width: 147px;
-    height: auto;
+    align-items: center;
 }
 
 #drawer-toggle:checked ~ header .header-img {
     display: block;
+    width: 30vw;
+    max-width: 147px;
 }
 
 .channel {
     margin: 0;
     display: flex;
     flex-direction: column;
-    font-size: 40px;
+    font-size: 8vw;
 }
+
+@media (max-width: 600px) {
 .drawer_nav {
   display: flex;
   height: 100vh;
   background-color: #C0E6EA;
   position: fixed;
-  top: 115px;
+  top: 90px;
   right: -100%;
   left: auto;
-  width: 100%;
+  width: 75%;
   transition: right 0.5s ease;
+  z-index: 9999;
 }
-
-.nav-left {
-  background-color: #7dd3dc;
-  width: 25%; 
-  height: 100%;
 }
 
 .nav-right {
@@ -69,7 +83,7 @@ header {
   right: 0;
 }
 
-#drawer-toggle:checked + .drawer_btn .hnberger {
+#drawer-toggle:checked ~ header .drawer_btn .hnberger {
     display: none;
 }
 
@@ -81,10 +95,15 @@ header {
     display: none;
 }
 
-#drawer-toggle:checked + .drawer_btn .back_png {
+#drawer-toggle:checked ~ header .drawer_btn .back_png {
     display: inline;
-    height: 40px;
-    width: auto;
+    height: auto;
+    width: 10vw;
+    max-width: auto;
+}
+
+#drawer-toggle:checked ~ header .channel {
+  display: none;
 }
 
 .back_png {
@@ -130,7 +149,7 @@ header {
 .nav-right a {
   text-decoration: none;
   color: #0F5A5D;
-  font-size: 32px;
+  font-size: 5vw;
 }
 
 .chat {
@@ -150,36 +169,145 @@ body {
 .submission_form {
     background-color: white;
     position: fixed;
+    display: flex;
     bottom: 0;
     width: 100%;
-    height: 100px;
+    height: auto;
+    padding: 8px;
   
 }
 
 .submission {
-    align-items: center;
-    width: 56px;
-    height: auto;
+  width: 48px;
+  height: auto;
+  margin: 8px 16px;
+  padding: 0;
+  align-items: center;
 }
 
-.messages-form {
+.chat-form {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   flex: 1;
-  margin: 0;
-  padding: 0;
-  gap: 0;
+  gap: 8px;
   font-size: 16px;
 }
 
-.messaages-form input[type="text"] {
-  flex: 1;
-  padding: 0.5rem;
+.chat-form input[type="text"] {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  flex: 1 1 auto;
+  padding: 1rem;
   font-size: 1rem;
+  border-radius: 24px;
 }
 
-.messages-form button {
-  margin: 0;
+.send-btn {
   padding: 0;
-  align-items: center;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background: white;
+  cursor: pointer;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.chat-container > div {
+  max-width: 60%;
+  padding: 16px 24px;
+  border-radius: 10px;
+  margin: 24px;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .chat-container > div {
+    max-width: 80%;
+    padding: 12px 16px;
+  }
+}
+
+.othercomment {
+  background: #1A8BA6;
+  color: white;
+  align-self: flex-start;
+  position: relative;
+}
+
+.othercomment .name2 {
+  font-size: 2.5vw;
+  color: #333;
+  position: absolute;
+  top: -16px;
+  left: -4px;
+}
+
+.othercomment::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent #1A8BA6 transparent transparent;
+}
+
+
+.comment {
+  background: #1A8BA6;
+  color: white;
+  align-self: flex-start;
+  position: relative;
+}
+
+.comment::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent #1A8BA6 transparent transparent;
+}
+
+.comment .name1 {
+  position: absolute;
+  top: -16px;
+  left: -3px;
+  font-size: 2.5vw;
+  color: #333;
+}
+
+.threecomment {
+  border-color: #1A8BA6;
+  background: #087E83;
+  color: white;
+  align-self: flex-end;
+  position: relative;
+}
+ 
+.threecomment .delete {
+  color: black;
+  font-size: 12px;
+  position: absolute;
+  bottom: -20px;
+  right: -12px;
+  cursor: pointer;
+}
+
+.threecomment::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: -20px;
+  border-width:  10px;
+  border-style: solid;
+  border-color: transparent transparent transparent #087E83;
 }

@@ -11,19 +11,24 @@
     <input type="checkbox" id="drawer-toggle" hidden />
     <header class="header">
         <div class="header-contener">
-             <img src="../../static/img/戻る.png" alt="戻る" class="back"/>
-             <img src="../../static/img/Tabi talk 1.svg" alt="Tabi talkロゴ" class="header-img"/>
-             <div class="channel_container">
+            <div class="header-left">
+                <img src="../../static/img/戻る.png" alt="戻る" class="back"/>
+            </div>
+
+             <div class="header-center">
+                 <img src="../../static/img/Tabi talk 1.svg" alt="Tabi talkロゴ" class="header-img"/>
                 <p class="channel">チャンネル名</p>
-                    <p class="user">ユーザー名</p>
+                <p class="user">ユーザー名</p>
              </div>   
-            <label for="drawer-toggle" class="drawer_btn"> 
-                <img src="../../static/img/ハンバーガーメニュー.png" alt="ハンバーガー" class="hnberger"/>
-                <img src="../../static/img/閉じる.png" alt="戻る" class="back_png"/>
-            </label>
+
+             <div class="header-right">
+                <label for="drawer-toggle" class="drawer_btn"> 
+                    <img src="../../static/img/ハンバーガーメニュー.png" alt="ハンバーガー" class="hnberger"/>
+                    <img src="../../static/img/閉じる.png" alt="戻る" class="back_png"/>
+                </label>
+             </div>    
         
             <nav class="drawer_nav">
-                <div class="nav-left"></div>
                 <div class="nav-right">
                     <ul>
                         <li><a href="/home">ホーム</a></li>
@@ -34,8 +39,29 @@
         </div>
  </header>
     <main>
+        <div class="chat-container">
+            <div class="comment">
+                <span class="name1">トラベル太</span>
+                <p>こんにちは</p>            
+            </div>
+
+            <div class="othercomment">
+                <span class="name2">トラベル美</span>
+                <p>はじめまして</p>
+            </div>
+
+            <div class="threecomment">
+                <span class="delete">削除</span>
+                <p>はじめまして</p>
+            </div>
+        </div>    
          <div class="submission_form">
-             <img src="../../static/img/送信アイコン.png" alt="戻る" class="submission"/>
+            <sorm class="chat-form" action="#" method="post">
+                <input type="text" name="message" placeholder="メッセージを入力..." required>
+                <button type="submit" class="send-btn">
+                    <img src="../../static/img/送信アイコン.png" alt="戻る" class="submission"/>
+                </button>    
+            </form> 
          </div>
           
     </main>
