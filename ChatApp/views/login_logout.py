@@ -1,7 +1,7 @@
 #Blueprintはアプリケーションを複数のモジュールに分割することを可能にする
 from flask import request, redirect, render_template, session, flash, url_for, Blueprint
 import hashlib
-#MySQLの一般的な機能
+#DBと接続するために使うドライバー
 import pymysql
 from models.user import User
 

@@ -1,4 +1,5 @@
 from flask import abort
+#DBと接続するために使うドライバー
 import pymysql
 from models.DB import DB
 
@@ -8,8 +9,8 @@ db_pool = DB.init_db_pool()
 
 # チャンネルクラス(エリア＆チャンネル)
 class Channel:
+    #エリア表示
     @classmethod
-   #エリア表示
     def areas_get_all(cls):
         conn = db_pool.get_conn()
         try:

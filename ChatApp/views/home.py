@@ -1,5 +1,5 @@
 from flask import redirect, render_template, session,url_for, Blueprint
-#MySQLの一般的な機能
+#DBと接続するために使うドライバー
 import pymysql
 from models.channels import Channel
 

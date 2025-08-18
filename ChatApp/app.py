@@ -5,13 +5,18 @@ from views.home import home
 from views.channels import channels
 from views.chat import chat
 
+#uuidモジュールはPythonに組み込まれている標準ライブラリの一部でUUID（Universally Unique Identifier）を生成するための機能を提供
 import uuid
+#OS（オペレーティングシステム）との対話を可能にするための標準ライブラリ
+#環境変数の操作ができる
 import os
 
 app = Flask(__name__)
 
 #SECRET_KEYはセッション情報(Cookie)を暗号化する際に使用する秘密鍵(文字列)
 #Cookieはユーザのログイン情報が記録されたデータのことで、クライアント側(ブラウザや端末)に直接保存されるもの
+#Flaskでは必要
+#hexは
 app.secret_key = os.getenv('SECRET_KEY', uuid.uuid4().hex)
 
 #Blueprint登録

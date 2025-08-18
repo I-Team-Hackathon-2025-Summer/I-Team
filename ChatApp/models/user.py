@@ -1,4 +1,5 @@
 from flask import abort
+#DBと接続するために使うドライバー
 import pymysql
 from models.DB import DB
 
@@ -35,6 +36,7 @@ class User:
                conn.commit()
         #except: 特定のエラーを捕捉し、そのエラーに対する処理を記述
        except pymysql.Error as e:
+           #f-stringは文字列内に変数や式を埋め込むことができ、より簡潔で読みやすいコードを書くことができる
            #abortは特定のHTTPステータスコードを返してリクエストを中断することができる
            print(f'エラーが発生しています：{e}')
            abort(500)

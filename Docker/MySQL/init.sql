@@ -33,10 +33,13 @@ CREATE TABLE open_channels (
 CREATE TABLE open_messages (
     message_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id VARCHAR(255) NOT NULL,
+    channel_id INT NOT NULL,
     message TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     /*親テーブル(users)でレコードが削除されたら、子テーブル(open_message)のレコードも削除されるように設定*/
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+    /*親テーブル(open_channels)でレコードが削除されたら、子テーブル(open_message)のレコードも削除されるように設定*/
+    FOREIGN KEY (channel_id) REFERENCES open_channels(channel_id) ON DELETE CASCADE
 );
 
 INSERT INTO users(user_id, user_name, email, password) VALUES('970af84c-dd40-47ff-af23-282b72b7cca8','テスト','test@gmail.com','testtest123');

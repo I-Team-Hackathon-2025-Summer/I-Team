@@ -17,7 +17,7 @@
       </div>
       <div class="prefectures">
         {% for channels in channels %}
-        <a href="{{ url_for( 'chat.chat_view', channel_id='1')}}">{{ channels.prefecture }}</a>
+        <a href="{{ url_for( 'chat.chat_view', channel_id=channels.channel_id )}}">{{ channels.prefecture }}</a>
         {% endfor %}
       </div>
     </div>
