@@ -1,30 +1,31 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>chat</title>
-    <link rel="stylesheet" href="../../static/css/chat.css" />
-    <link rel="icon" href="/ChatApp/static/img/favicon.png" />
- </head>
-  <body>
+{% extends 'base.html' %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock %}
+{% block title %}
+<title>chat</title>
+{% endblock %}
+{% block body %}
+
+{% include 'header.html' %}
+<div class="home-wrapper">
     <input type="checkbox" id="drawer-toggle" hidden />
     <header class="header">
         <div class="header-contener">
             <div class="header-left">
-                <img src="../../static/img/戻る.png" alt="戻る" class="back"/>
+                <img src="{{ url_for('static', filename='img/戻る.png') }}" ...>
             </div>
 
              <div class="header-center">
-                 <img src="../../static/img/Tabi talk 1.svg" alt="Tabi talkロゴ" class="header-img"/>
+                <img src="{{ url_for('static', filename='img/Tabi talk 1.svg') }}" alt="Tabi talkロゴ" class="header-img"/>
                 <p class="channel">チャンネル名</p>
                 <p class="user">ユーザー名</p>
              </div>   
 
              <div class="header-right">
                 <label for="drawer-toggle" class="drawer_btn"> 
-                    <img src="../../static/img/ハンバーガーメニュー.png" alt="ハンバーガー" class="hnberger"/>
-                    <img src="../../static/img/閉じる.png" alt="戻る" class="back_png"/>
+                    <img src="{{ url_for('static', filename='img/ハンバーガーメニュー.png') }}" alt="ハンバーガー" class="hnberger"/>
+                    <img src="{{ url_for('static', filename='img/閉じる.png') }}" alt="閉じる" class="back_png"/>
                 </label>
              </div>    
         
@@ -56,13 +57,13 @@
             </div>
         </div>    
          <div class="submission_form">
-            <sorm class="chat-form" action="#" method="post">
+            <form class="chat-form" action="#" method="post">
                 <input type="text" name="message" placeholder="メッセージを入力..." required>
                 <button type="submit" class="send-btn">
-                    <img src="../../static/img/送信アイコン.png" alt="戻る" class="submission"/>
+                    <img src="{{ url_for('static', filename='img/送信アイコン.png') }}" alt="送信" class="submission"/>
                 </button>    
             </form> 
          </div>
           
     </main>
- </body>
+ {% endblock %}

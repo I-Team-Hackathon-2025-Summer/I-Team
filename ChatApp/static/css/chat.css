@@ -1,7 +1,31 @@
-body {
+*{
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow-x: hidden;
   background-color: #7dd3dc;
-  font-size: 16px;
+  font-family: "M PLUS 1p" , sans-serif;
+}
+
+.home-wrapper{
+  max-width: 430px;
+  width: 100%;
+  flex: 1;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;;
+  align-items: flex-start;
+  margin:0 auto;
+  gap: 16px;
 }
 
 .back, .hnberger {
@@ -18,6 +42,9 @@ header {
     align-items: center;
     background-color: white;
     padding: 8px 16px;
+    width: 100%;
+    position: relative;
+    z-index: 1000;
   
 }
 
@@ -60,6 +87,7 @@ header {
 @media (max-width: 600px) {
 .drawer_nav {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   background-color: #C0E6EA;
   position: fixed;
@@ -72,9 +100,16 @@ header {
 }
 }
 
+@media (min-width: 601px) {
+  .drawer_nav {
+    display: none;
+  }
+}
+
 .nav-right {
   width: 75%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -97,9 +132,8 @@ header {
 
 #drawer-toggle:checked ~ header .drawer_btn .back_png {
     display: inline;
-    height: auto;
     width: 10vw;
-    max-width: auto;
+    max-width: 48px;
 }
 
 #drawer-toggle:checked ~ header .channel {
@@ -118,19 +152,16 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 32px ;
+    padding: 32px;
 }
 
 #drawer-toggle {
   display: none;
-  width: 273px;
-  height: 160px;
+
 }
 
 .drawer_btn {
   display: inline-block;
-  width: auto;   
-  height: 24px;    
   padding: 8px 32px;
   cursor: pointer;
 }
@@ -172,8 +203,9 @@ body {
     display: flex;
     bottom: 0;
     width: 100%;
-    height: auto;
+    align-items: center;
     padding: 8px;
+    z-index: 1000;
   
 }
 
@@ -181,8 +213,7 @@ body {
   width: 48px;
   height: auto;
   margin: 8px 16px;
-  padding: 0;
-  align-items: center;
+
 }
 
 .chat-form {
@@ -191,24 +222,19 @@ body {
   justify-content: center;
   flex: 1;
   gap: 8px;
-  font-size: 16px;
+
 }
 
 .chat-form input[type="text"] {
-  display: flex;
-  flex-direction: center;
-  align-items: center;
-  flex: 1 1 auto;
-  padding: 1rem;
-  font-size: 1rem;
-  border-radius: 24px;
+ flex: 1;
+ padding: 1rem;
+ font-size: 1rem;
+ border-radius: 24px;
+ border: 1px solid #ccc;
 }
 
 .send-btn {
-  padding: 0;
   border: none;
-  box-shadow: none;
-  outline: none;
   background: white;
   cursor: pointer;
 }
@@ -216,6 +242,8 @@ body {
 .chat-container {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  width: 100%;
 
 }
 
@@ -252,7 +280,7 @@ body {
 .othercomment::after {
   content: "";
   position: absolute;
-  top: 10px;
+  top: 12px;
   left: -20px;
   border-width: 10px;
   border-style: solid;
