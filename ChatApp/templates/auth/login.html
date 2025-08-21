@@ -1,35 +1,41 @@
-{% extends 'auth/base.html' %}
+{% extends 'base.html' %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
 {% block title %}
 <title>login</title>
 {% endblock %}
+
 {% block body %}
-<div class="auth-wrapper">
-  <div class="auth-container">
+  <div class="auth-wrapper">
     <img 
-    class="auth-main-logo"
-    src="../../static/img/Tabi talk ロゴ.png" alt="ロゴ">
+      class="auth-main-logo"
+      src="{{ url_for('static', filename='img/Tabitalkロゴ.png') }}" alt="ロゴ">
 
-    <form class="auth-form" method="post" action="{{ url_for('login_logout.login_process') }}">
-      <h1 class="auth-title">ログイン</h1>
+    <h1 class="auth-title">ログイン</h1>
+
+    <form action="{{ url_for('login_logout.login_process') }}" method="post">
+      <div class="auth-form">
         <div class="auth-form-inputs">
-          <label for="email-input">メールアドレス</label><br>
-          <input 
-          type="email"
-          placeholder="メールアドレス"
-          name="email"
-          id="email-input">
+          <label for="email-input">メールアドレス</label>
+            <input 
+            type="e-mail"
+            id="email-input"
+            placeholder="メールアドレス"
+            name="email">
         </div>
 
         <div class="auth-form-inputs">
-          <label for="pasword-input">パスワード</label><br>
-          <input 
-          type="password"
-          placeholder="パスワード"
-          name="password"
-          id="pasword-input">
+          <label for="password-input">パスワード</label>
+            <input 
+            type="password"
+            id="password-input"
+            placeholder="パスワード"
+            name="password">
         </div>
-        
-        <div class="auth-button-container">
+      </div>
+      
+      <div class="auth-btnlink">
           {% with messages = get_flashed_messages() %} {% if messages %}
           <ul class="flashes">
             {% for message in messages %}
@@ -37,12 +43,9 @@
             {% endfor %}
           </ul>
           {% endif %} {% endwith %}
-          <button class="auth-button" type="submit">ログイン</button>
-          <a class="switch-auth-mode" href="{{ url_for('signup.signup_view') }}">
-            新規登録はこちら
-          </a>
-        </div>
+        <button class="auth-button" type="submit">ログイン</button>
+        <a class="auth-link" href="{{ url_for('signup.signup_view') }}">新規登録はこちら</a>
+      </div>
     </form>
   </div>
-</div>
-{% endblock %}
+{% endblock %} 

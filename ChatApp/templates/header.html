@@ -1,0 +1,28 @@
+{% if page == 'home' %}
+<header class="header">
+  <div class="header-inner">
+    <img class="header-logo" src="{{ url_for('static', filename='img/Tabitalkロゴ.png') }}" alt="ロゴ">
+    <span class="header-uname">{{ session['user_name'] }}</span>
+    <a class="header-menu" href="#"><img src="{{ url_for('static', filename='img/ハンバーガーメニュー.png') }}" alt="メニュー"></a>
+  </div>
+</header>
+
+{% elif page == 'ch' %}
+<header class="header">
+  <div class="header-inner">
+    <a class="back-btn" onclick="history.back()"><img src="{{ url_for('static', filename='img/戻る.png') }}" alt="戻る"></a>
+    <img class="header-logo" src="{{ url_for('static', filename='img/Tabitalkロゴ.png') }}" alt="ロゴ">
+    <span class="header-uname">{{ session['user_name'] }}</span>
+    <a class="header-menu" href="#"><img src="{{ url_for('static', filename='img/ハンバーガーメニュー.png') }}" alt="メニュー"></a>
+  </div>
+</header>
+
+{% elif page == 'chat' %}
+<header class="header">
+  <div class="header-inner">
+    <a class="back-btn" onclick="history.back()"><img src="{{ url_for('static', filename='img/戻る.png') }}" alt="戻る"></a>
+    <span class="header-uname">{{ session['user_name'] }}</span>
+    <a class="header-menu" href="#"><img src="{{ url_for('static', filename='img/ハンバーガーメニュー.png') }}" alt="メニュー"></a>
+  </div>
+</header>
+{% endif %}

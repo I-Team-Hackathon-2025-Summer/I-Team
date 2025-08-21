@@ -1,0 +1,35 @@
+<!-- {% extends 'base.html' %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
+{% endblock %}
+{% block title %}
+<title>delete_msg</title>
+{% endblock %}
+
+{% block body %} -->
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
+    <title>delete_msg</title>
+    <link rel="icon" href="../../static/img/favicon.png" />
+    <link rel="stylesheet" href="../../static/css/modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="modalDelete" class="modal">
+      <div class="modal-content">
+        <p id="confirm">このメッセージを削除しますか？</p>
+        <p id="u_msg">{{u_msg}}</p>
+        <button id="delete">削除</button>
+        <button id="cancel">キャンセル</button>
+      </div>
+    </div>
+  </body>
+</html>

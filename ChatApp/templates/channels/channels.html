@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/channels.css') }}">
+{% endblock %}
+{% block title %}
+<title>channels</title>
+{% endblock %}
+
+{% block body %}
+<div class="home-wrapper">
+{% include "header.html" %}
+  <main>
+    <div class="main-contents">
+      <div class="area-name">
+        {{ areas.area_name }}
+      </div>
+        <div class="prefectures">
+          {% for ch in channels %}
+          <a href="#">{{ ch.prefecture }}</a>
+          <!-- href内のURLは各チャット画面にする -->
+          {% endfor %}
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}
