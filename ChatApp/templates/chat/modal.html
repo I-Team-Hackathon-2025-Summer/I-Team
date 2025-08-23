@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
+{% endblock %}
+{% block title %}
+<title>delete_msg</title>
+{% endblock %}
+
+{% block body %}
+<button id="openModal">open</button>
+  <div id="modalDelete" class="modal">
+    <p id="confirm">このメッセージを削除しますか？</p>
+    <p id="u_msg">{{u_msg}}メッセージ内容</p>
+    <button id="delete">削除</button>
+    <button id="cancel">キャンセル</button>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+{% endblock %}

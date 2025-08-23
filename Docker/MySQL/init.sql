@@ -37,7 +37,7 @@ CREATE TABLE open_messages (
     message TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     /*親テーブル(users)でレコードが削除されたら、子テーブル(open_message)のレコードも削除されるように設定*/
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     /*親テーブル(open_channels)でレコードが削除されたら、子テーブル(open_message)のレコードも削除されるように設定*/
     FOREIGN KEY (channel_id) REFERENCES open_channels(channel_id) ON DELETE CASCADE
 );

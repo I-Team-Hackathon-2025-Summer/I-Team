@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -6,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
     {% block title %}{% endblock %}
-    <!-- jinja表示にしても良さそう -->
-    <link rel="icon" href="static/img/favicon.png" />
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" />
     {% block stylesheet %}{% endblock %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,5 +14,6 @@
   
   <body>
     {% block body %}{% endblock %}
+    {% block scripts %}{% endblock %}
   </body>
 </html>

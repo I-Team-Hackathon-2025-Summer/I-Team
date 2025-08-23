@@ -17,4 +17,4 @@ def home_view():
      areas = Channel.areas_get_all()
      #reverseはリストの要素の順序を逆にする
      #areas.reverse()
-  return render_template('channels/home.html', areas=areas)
+  return render_template('channels/home.html', areas=areas, page='home')

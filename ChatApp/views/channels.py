@@ -15,7 +15,7 @@ def channels_view(area_id):
       return redirect(url_for('login_logout.login_view'))
   else:
      #エリア名表示
-     areas = Channel.find_by_area_name(area_id=area_id)
+     areas = Channel.find_by_area_name(area_id)
      #チャンネル名表示
-     channels = Channel.channels_get_all(area_id=area_id)
-  return render_template('channels/channels.html', channels=channels, areas=areas)
+     channels = Channel.channels_get_all(area_id)
+  return render_template('channels/channels.html', channels=channels, areas=areas, page='ch')

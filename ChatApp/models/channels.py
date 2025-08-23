@@ -20,7 +20,7 @@ class Channel:
                 #fetchallはSQLクエリの結果からすべての行を取得する
                 #fetconeでもOK
                 areas = cur.fetchall()
-            return areas
+                return areas
         except pymysql.Error as e:
             print(f'エラーが発生しています：{e}')
             abort(500)
@@ -37,7 +37,7 @@ class Channel:
                 cur.execute(sql, (area_id,))
                 #fetchallはSQLクエリの結果からすべての行を取得する
                 channels = cur.fetchall()
-            return channels
+                return channels
         except pymysql.Error as e:
             print(f'エラーが発生しています：{e}')
             abort(500)
@@ -54,7 +54,7 @@ class Channel:
                 cur.execute(sql,(area_id,))
                 #area_idに対して1行だけ取得できればいいからfetchoneでOK
                 areas = cur.fetchone()
-            return areas
+                return areas
         except pymysql.Error as e:
             print(f'エラーが発生しています：{e}')
             abort(500)

@@ -11,7 +11,7 @@ db_pool = DB.init_db_pool()
 class Chat:
   #チャンネルname表示
   @classmethod
-  def find_by_channel_name(cls, channel_id):
+  def find_by_channel(cls, channel_id):
       conn = db_pool.get_conn()
       try:
           with conn.cursor() as cur:
@@ -19,7 +19,7 @@ class Chat:
               cur.execute(sql,(channel_id,))
               #channel_idに対して1行だけ取得できればいいからfetchoneでOK
               channels = cur.fetchone()
-          return channels
+              return channels
       except pymysql.Error as e:
           print(f'エラーが発生しています：{e}')
           abort(500)
@@ -32,11 +32,16 @@ class Chat:
     conn = db_pool.get_conn()
     try:
         with conn.cursor() as cur:
-            sql = "SELECT * FROM open_messages WHERE channels_id=%s;"
+            sql = """
+                SELECT *
+                FROM open_messages AS m
+                INNER JOIN users AS u ON m.user_id = u.user_id
+                WHERE channel_id=%s;
+              """
             cur.execute(sql, (channel_id,))
             #fetchallはSQLクエリの結果からすべての行を取得する
             messages = cur.fetchall()
-        return messages
+            return messages
     except pymysql.Error as e:
         print(f'エラーが発生しています：{e}')
         abort(500)
@@ -48,7 +53,7 @@ class Chat:
   #clsはPythonのクラスメソッドにおいて、クラス自体を指す特別な引数
   #clsの役割①：クラスを使いたい時インスタス化をしなくていい(new User的なのが要らない)
   #役割②：使い回しができる。同クラス内の他関数にclsを使えば、clsを介してそのクラスのクラス変数やクラスメソッドにアクセスできる
-  def create(cls, user_id, message):
+  def create(cls, user_id, channel_id, message):
   #DB接続プールからコネクションを取得する
     conn = db_pool.get_conn()
     #try-except文はPythonにおけるエラーハンドリングのための構文
@@ -60,10 +65,10 @@ class Chat:
         #closeはリソースを完全に閉じて使用できなくする。cursorを閉じることで、他のプロセスがそのcursorにアクセスできるようにする
         #with内でエラーが発生した場合でも,カーソルは自動的に解放される
         with conn.cursor() as cur:
-            sql = "INSERT INTO open_messages (user_id, message) VALUES (%s, %s);"
+            sql = "INSERT INTO open_messages (user_id, channel_id, message) VALUES (%s, %s, %s);"
             # SQLを実行し、パラメータ（uid, name, email, password）を埋め込む
             #executeはSQLクエリを実行するために使う
-            cur.execute(sql, (user_id, message))
+            cur.execute(sql, (user_id, channel_id, message,))
             # データベースに変更を反映（保存）する
             conn.commit()
     #except: 特定のエラーを捕捉し、そのエラーに対する処理を記述
