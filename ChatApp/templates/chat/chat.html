@@ -21,18 +21,38 @@
           <!-- 渡されたIDとユーザIDが一致すればmassages-self（自身）として処理 -->
           {% if messages.user_id == user_id %}
             <div class="massages-self">
-              <p>{{ messages.message }}</p>
-              <form
-              class="delete-form"
-              action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
-              method="post">
-                <button id="openModal" class="delete" type="submit">削除</button>
-              </form>
+              <div class="bubble">
+                <p>{{ messages.message }}</p>
+              </div>
+              <button id="openModal" class="delete">削除</button>
             </div>
+
+              <div id="modalDelete" class="modal">
+                <div class="modal-content">
+                  <p id="confirm">このメッセージを削除しますか？</p>
+                  <p id="u_msg">{{messages.message}}</p>
+                  <form
+                  class="delete-form"
+                  action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
+                  method="post">
+                    <button id="delete" type="submit">削除</button>
+                  </form>
+                  <button id="cancel">キャンセル</button>
+                </div>
+              </div>
+
+                <!-- <form
+                class="delete-form"
+                action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
+                method="post">
+                  <button id="openModal" class="delete" type="submit">削除</button>
+                </form> -->
           {% else %}
             <div class="massages-other">
               <p class="name">{{ messages.user_name }}</p>
-              <p>{{ messages.message }}</p>
+              <div class="bubble">
+                <p>{{ messages.message }}</p>
+              </div>
             </div>
           {% endif %}
         {% endfor %}
@@ -54,5 +74,8 @@
 
   </main>
 </div> 
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+{% endblock %}
 <!-- {% include 'chat/modal.html' %} -->
 {% endblock %}

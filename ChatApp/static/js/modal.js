@@ -6,7 +6,8 @@ const cancelBtn = document.getElementById("cancel");
 
 // モーダルを開く
 openModal.addEventListener('click', () => {
-  modal.showModal();   //モーダルを表示
+  modal.style.display = "block"
+  // modal.showModal();   //モーダルを表示
 });
 
 // 削除ボタンをクリックしたとき
@@ -22,8 +23,8 @@ cancelBtn.addEventListener('click', () => {
 });
 
 // モーダル外（背景）をクリックしたら閉じる
-confirmDialog.addEventListener('click', (e) => {
-    if (e.target === confirmDialog) {
-        confirmDialog.close();
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
     }
 });
