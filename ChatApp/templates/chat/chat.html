@@ -28,7 +28,7 @@
                 class="delete-form"
                 action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
                 method="post">
-                <button id="openModal" class="delete" type="submit">削除</button>
+                <button class="openModal" type="button">削除</button>
               </form>
             </div>
           {% else %}
@@ -58,5 +58,5 @@
 
   </main>
 </div> 
-<!-- {% include 'chat/modal.html' %} -->
+{% include 'chat/modal.html' %}
 {% endblock %}
