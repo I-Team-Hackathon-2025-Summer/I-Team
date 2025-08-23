@@ -1,9 +1,16 @@
+<input type="checkbox" id="drawer-toggle" hidden>
+
 {% if page == 'home' %}
 <header class="header">
   <div class="header-inner">
     <img class="header-logo" src="{{ url_for('static', filename='img/Tabitalkロゴ.png') }}" alt="ロゴ">
     <span class="header-uname">{{ session['user_name'] }}</span>
-    <a class="header-menu" href="#"><img src="{{ url_for('static', filename='img/ハンバーガーメニュー.png') }}" alt="メニュー"></a>
+
+    <!-- ハンバーガー -->
+    <label for="drawer-toggle" class="drawer_btn">
+      <img src="{{ url_for('static', filename='img/ハンバーガーメニュー.png') }}" alt="メニュー" class="hnberger">
+      <img src="{{ url_for('static', filename='img/閉じる.png') }}" alt="閉じる" class="close-btn">
+    </label>
   </div>
 </header>
 
@@ -13,39 +20,43 @@
     <a class="back-btn" onclick="history.back()"><img src="{{ url_for('static', filename='img/戻る.png') }}" alt="戻る"></a>
     <img class="header-logo" src="{{ url_for('static', filename='img/Tabitalkロゴ.png') }}" alt="ロゴ">
     <span class="header-uname">{{ session['user_name'] }}</span>
-    <a class="header-menu" href="#"><img src="{{ url_for('static', filename='img/ハンバーガーメニュー.png') }}" alt="メニュー"></a>
+
+    <!-- ハンバーガー -->
+    <label for="drawer-toggle" class="drawer_btn">
+      <img src="{{ url_for('static', filename='img/ハンバーガーメニュー.png') }}" alt="メニュー" class="hnberger">
+      <img src="{{ url_for('static', filename='img/閉じる.png') }}" alt="閉じる" class="close-btn">
+    </label>
   </div>
 </header>
 
 {% elif page == 'chat' %}
 <header class="header">
-  <div class="header-contener"> 
-    <!-- スペルミス container -->
-    <div class="header-left">
-      <img src="{{ url_for('static', filename='img/戻る.png') }}" alt="戻る" class="back"/>
+  <div class="header-inner">
+    <a class="back-btn" onclick="history.back()">
+      <img src="{{ url_for('static', filename='img/戻る.png') }}" alt="戻る">
+      <img class="header-logo" src="{{ url_for('static', filename='img/Tabitalkロゴ.png') }}" alt="Tabitalkロゴ">
+    </a>
+
+    <div class="header-texts">
+      <div class="titles">
+        <p class="channel">チャンネル名</p>
+        <p class="user">{{ session['user_name'] }}</p>
+      </div>
     </div>
 
-    <div class="header-center">
-      <img src="{{ url_for('static', filename='img/Tabitalkロゴ.png') }}" alt="Tabitalkロゴ" class="header-img"/>
-      <p class="channel">チャンネル名</p>
-      <p class="user">ユーザー名</p>
-    </div>
-
-    <div class="header-right">
-      <label for="drawer-toggle" class="drawer_btn">
-        <img src="{{ url_for('static', filename='img/ハンバーガーメニュー.png') }}" alt="メニュー" class="hnberger"/>
-        <img src="{{ url_for('static', filename='img/閉じる.png') }}" alt="閉じる" class="back_png"/>
-      </label>
-    </div>
+    <!-- ハンバーガー -->
+    <label for="drawer-toggle" class="drawer_btn">
+      <img src="{{ url_for('static', filename='img/ハンバーガーメニュー.png') }}" alt="メニュー" class="hnberger">
+      <img src="{{ url_for('static', filename='img/閉じる.png') }}" alt="閉じる" class="close-btn">
+    </label>
   </div>
 </header>
-
-<nav class="drawer_nav">
-  <div class="nav-right">
-    <ul>
-      <li><a href="{{ url_for('home.home_view') }}">ホーム</a></li>
-      <li><a href="{{ url_for('login_logout.login_process') }}">ログアウト</a></li>
-    </ul>
-  </div>
-</nav>
 {% endif %}
+
+<!-- メニュー -->
+<nav class="drawer_nav">
+  <ul>
+    <li><a href="{{ url_for('home.home_view') }}">ホーム</a></li>
+    <li><a href="{{ url_for('login_logout.login_process') }}">ログアウト</a></li>
+  </ul>
+</nav>

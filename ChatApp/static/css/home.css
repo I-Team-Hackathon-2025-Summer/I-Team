@@ -56,6 +56,49 @@ body {
   background-color: #f6f9f3;
 }
 
+/* ======== ハンバーガー ======== */
+
+/* はじめは表示させない */
+#drawer-toggle { display: none; }
+.close-btn { display: none; }
+
+/* ハンバーガーメニューをタップで表示させる */
+#drawer-toggle:checked ~ .header .hnberger { display: none; }    /* ハンバーガーOFF */ 
+#drawer-toggle:checked ~ .header .close-btn { display: inline; }  /* 閉じるON */
+
+/* ===== メニュー ===== */
+
+.drawer_nav {
+  position: fixed;
+  top: 80px;
+  right: -100%;    /* 右側・画面外に出しておく */
+  width: 60%;
+  max-width: 280px;
+  text-align: end;
+  line-height: 4;
+  padding: 12px 28px;
+  height: calc(100% - 80px);    /* 画面全体 - ヘッダーの高さ80px */
+  background: #C0E6EA;
+  transition: right .25s ease;
+  z-index: 1;
+}
+
+#drawer-toggle:checked ~ .drawer_nav {
+  /* 画面幅（100vh）から最大430pxを引いた余白÷2（半分）にして右側に寄せる
+  これによってbodyじゃなくwrapperの右端から出てくる */
+  right: calc((100vw - min(430px, 100vw)) / 2);
+}
+
+.drawer_nav ul { list-style: none; }
+
+.drawer_nav a {
+  display: block;
+  padding: 20px 24px;
+  text-decoration: none;
+  color: #0F5A5D;
+  font-size: 16px;
+}
+
 /* ======== メインコンテンツ ======== */
 
 main{
