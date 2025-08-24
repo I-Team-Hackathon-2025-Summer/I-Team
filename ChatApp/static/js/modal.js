@@ -1,6 +1,6 @@
 
 const openBtns = document.querySelectorAll(".openModal");
-// querySelectorAllは、class=openModalのボタンをすべて取得して
+// querySelectorAllは、openModalクラスのボタンをすべて取得して
 // openBtns という配列のようなリストに入れる
 const modal = document.getElementById("modalDelete");
 const deleteBtn = document.getElementById("delete");
