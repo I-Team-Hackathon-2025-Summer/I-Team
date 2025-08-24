@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% block stylesheet %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
@@ -17,36 +18,20 @@
       <!-- メッセージが0件ではない（存在する）ときに処理を続ける -->
       {% if messages|length > 0 %}
         <!-- messagesリストの値をmassageに代入するループ -->
-        {% for messages in messages %}
+        {% for messages in messages%}
           <!-- 渡されたIDとユーザIDが一致すればmassages-self（自身）として処理 -->
           {% if messages.user_id == user_id %}
             <div class="massages-self">
               <div class="bubble">
-                <p>{{ messages.message }}</p>
+               <p>{{ messages.message }}</p>
               </div>
-              <button id="openModal" class="delete">削除</button>
-            </div>
-
-              <div id="modalDelete" class="modal">
-                <div class="modal-content">
-                  <p id="confirm">このメッセージを削除しますか？</p>
-                  <p id="u_msg">{{messages.message}}</p>
-                  <form
-                  class="delete-form"
-                  action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
-                  method="post">
-                    <button id="delete" type="submit">削除</button>
-                  </form>
-                  <button id="cancel">キャンセル</button>
-                </div>
-              </div>
-
-                <!-- <form
+              <form
                 class="delete-form"
                 action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
                 method="post">
-                  <button id="openModal" class="delete" type="submit">削除</button>
-                </form> -->
+                <button class="openModal" data-message="{{ messages.message }}" type="button">削除</button>
+              </form>
+            </div>
           {% else %}
             <div class="massages-other">
               <p class="name">{{ messages.user_name }}</p>
@@ -74,8 +59,5 @@
 
   </main>
 </div> 
-{% block scripts %}
-  <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
-{% endblock %}
-<!-- {% include 'chat/modal.html' %} -->
+{% include 'chat/modal.html' %}
 {% endblock %}

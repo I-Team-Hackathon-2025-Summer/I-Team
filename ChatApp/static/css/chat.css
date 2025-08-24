@@ -185,7 +185,7 @@ main {
 }
 
 /* ===== 削除ボタン ===== */
-.delete {
+.openModal {
   border: none;
   background: none;
   color: #000000;
@@ -234,36 +234,33 @@ main {
   width: 48px;
   height: auto;
   object-fit: contain;
-  margin: 8px 16px;
+  margin: 4px;
 }
 
-/* モーダル */
+/* ===== モーダル ===== */
 
-#modalDelete {
+.modal {
   display: none;
-  max-width: 400px;
   position: fixed;
-  /* left: 0;
-  right: 0; */
+  inset: 0;
   width: 100%;
   height: 100%;
-  /* display: flex; */
-  justify-self: center;
+  justify-content: center;
   align-items: center;
-  z-index: 1;
-  background-color: #9bcad0;
+  z-index: 3;
+  background-color: rgba(0,0,0,0.35);    /* 半透明 */
 }
 
 .modal-content {
-  margin: 15% auto;
-  width: 90%;
+  width: 300px;
+  height: auto;
   padding: 20px;
   border-radius: 12px;
   text-align: center;
   background-color: #F3F2F2;
   line-height: 80px;
   animation-name: popup;
-  animation-duration: 1.1s;
+  animation-duration: 0.5s;
 }
 
 @keyframes popup {
@@ -288,13 +285,14 @@ main {
   color: #0F5A5D;
 }
 
-button {
-  width: 28%;
+.modal button {
+  height: 36px;
+  min-width: 60px;
   padding: 8px;
   border-radius: 12px;
   border: none;
   margin: 0 12px;
-}
+  cursor: pointer;}
 
 #delete {
   background-color: #0F5A5D;
