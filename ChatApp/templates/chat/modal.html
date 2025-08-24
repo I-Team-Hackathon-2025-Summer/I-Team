@@ -1,20 +1,12 @@
-<!-- メッセージが0件ではない（存在する）ときに処理を続ける -->
-{% if messages|length > 0 %}
-  <!-- messagesリストの値をmassageに代入するループ -->
-  {% for messages in messages%}
-    <!-- 渡されたIDとユーザIDが一致すればmassages-self（自身）として処理 -->
-    {% if messages.user_id == user_id %}
-      <div id="modalDelete" class="modal">
-        <div class="modal-content">
-          <p id="confirm">このメッセージを削除しますか？</p>
-          <p id="u_msg"></p>
-          <button id="delete">削除</button>
-          <button id="cancel">キャンセル</button>
-        </div>
-      </div>
-    {% endif %}  
-  {% endfor %}
-{% endif %}
+
+<div id="modalDelete" class="modal">
+  <div class="modal-content">
+    <p id="confirm">このメッセージを削除しますか？</p>
+    <p id="u_msg"></p>
+    <button id="delete">削除</button>
+    <button id="cancel">キャンセル</button>
+  </div>
+</div>
 
 {% block scripts %}
   <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
