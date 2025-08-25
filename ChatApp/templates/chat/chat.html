@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% block stylesheet %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
@@ -28,7 +29,7 @@
                 class="delete-form"
                 action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
                 method="post">
-                <button class="openModal" type="button">削除</button>
+                <button class="openModal" data-message="{{ messages.message }}" type="button">削除</button>
               </form>
             </div>
           {% else %}
@@ -49,8 +50,8 @@
 
       <div class="submission_form">
         <form class="chat-form" action="{{ url_for( 'chat.create_messages', channel_id=channels.channel_id )}}" method="post">
-          <input id="msg-text" type="text" name="message" placeholder="メッセージを入力...">
-          <button id="msg-btn" type="submit" class="send-btn">
+          <input type="text" name="message" placeholder="メッセージを入力...">
+          <button type="submit" class="send-btn">
             <img src="{{ url_for('static', filename='img/送信アイコン.png') }}" alt="送信" class="submission"/>
           </button>    
         </form> 

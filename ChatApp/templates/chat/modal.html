@@ -1,11 +1,12 @@
-  <div id="modalDelete" class="modal">
-    <div class="modal-content">
-      <p id="confirm">このメッセージを削除しますか？</p>
-      <p id="u_msg">{{u_msg}}メッセージ内容</p>
-      <button id="delete">削除</button>
-      <button id="cancel">キャンセル</button>
-    </div>
+
+<div id="modalDelete" class="modal">
+  <div class="modal-content">
+    <p id="confirm">このメッセージを削除しますか？</p>
+    <p id="u_msg"></p>
+    <button id="delete">削除</button>
+    <button id="cancel">キャンセル</button>
   </div>
+</div>
 
 {% block scripts %}
   <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
