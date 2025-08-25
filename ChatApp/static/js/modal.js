@@ -23,7 +23,7 @@ openBtns.forEach((btn) => {
 
 // 削除ボタンをクリックしたとき
 deleteBtn.addEventListener('click', () => {
-  if (targetForm) targetForm.submit();
+  targetForm.submit();
   modal.style.display = "none";
   // モーダルを閉じる
   targetForm = null;

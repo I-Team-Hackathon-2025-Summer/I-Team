@@ -138,7 +138,7 @@ main {
   /* word-breakはメッセージを吹き出し内で改行するためのプロパティ */
 }
 
-.bubble {
+.balloon {
   padding: 16px 24px;
   border-radius: 10px;
   position: relative;   /* しっぽのための基準 */
@@ -148,15 +148,16 @@ main {
 .massages-self {
   align-self: flex-end;
 }
-.massages-self .bubble {
+.massages-self .balloon {
   background: #1A8BA6;
   color: #FFFFFF;
+  margin: 0 8px;
 }
-.massages-self .bubble::after {
+.massages-self .balloon::after {
   content: "";
   position: absolute;
   top: 12px;
-  right: -10px;
+  right: -20px;
   border-width: 10px;
   border-style: solid;
   border-color: transparent transparent transparent #1A8BA6;
@@ -170,15 +171,16 @@ main {
 .massages-other {
   align-self: flex-start;
 }
-.massages-other .bubble {
+.massages-other .balloon {
   background: #5CA8B6;
   color: #fff;
+  margin: 0 8px;
 }
-.massages-other .bubble::after {
+.massages-other .balloon::after {
   content: "";
   position: absolute;
   top: 12px;
-  left: -10px;
+  left: -20px;
   border-width: 10px;
   border-style: solid;
   border-color: transparent #5CA8B6 transparent transparent;

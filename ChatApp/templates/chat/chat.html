@@ -21,7 +21,7 @@
           <!-- 渡されたIDとユーザIDが一致すればmassages-self（自身）として処理 -->
           {% if messages.user_id == user_id %}
             <div class="massages-self">
-              <div class="bubble">
+              <div class="balloon">
                <p>{{ messages.message }}</p>
               </div>
               <form
@@ -34,7 +34,7 @@
           {% else %}
             <div class="massages-other">
               <p class="name">{{ messages.user_name }}</p>
-              <div class="bubble">
+              <div class="balloon">
                 <p>{{ messages.message }}</p>
               </div>
             </div>
@@ -49,8 +49,8 @@
 
       <div class="submission_form">
         <form class="chat-form" action="{{ url_for( 'chat.create_messages', channel_id=channels.channel_id )}}" method="post">
-          <input type="text" name="message" placeholder="メッセージを入力..." required>
-          <button type="submit" class="send-btn">
+          <input id="msg-text" type="text" name="message" placeholder="メッセージを入力...">
+          <button id="msg-btn" type="submit" class="send-btn">
             <img src="{{ url_for('static', filename='img/送信アイコン.png') }}" alt="送信" class="submission"/>
           </button>    
         </form> 
