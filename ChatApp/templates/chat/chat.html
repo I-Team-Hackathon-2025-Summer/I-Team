@@ -1,4 +1,5 @@
 
+
 {% extends 'base.html' %}
 {% block stylesheet %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
@@ -22,22 +23,26 @@
           <!-- 渡されたIDとユーザIDが一致すればmassages-self（自身）として処理 -->
           {% if messages.user_id == user_id %}
             <div class="massages-self">
-              <div class="bubble">
+              <div class="balloon">
                <p>{{ messages.message }}</p>
               </div>
               <form
                 class="delete-form"
                 action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
                 method="post">
+                <!-- strftimeメソッドはdatetimeオブジェクトを日付や時間を指定したフォーマットの文字列に変換できる -->
+                <span>{{messages.created_at.strftime("%m.%d %H:%M")}}</span>
                 <button class="openModal" data-message="{{ messages.message }}" type="button">削除</button>
               </form>
             </div>
           {% else %}
             <div class="massages-other">
               <p class="name">{{ messages.user_name }}</p>
-              <div class="bubble">
+              <div class="balloon">
                 <p>{{ messages.message }}</p>
               </div>
+              <!-- strftimeメソッドはdatetimeオブジェクトを日付や時間を指定したフォーマットの文字列に変換できる -->
+              <span>{{messages.created_at.strftime("%m.%d %H:%M")}}</span>
             </div>
           {% endif %}
         {% endfor %}
@@ -50,7 +55,7 @@
 
       <div class="submission_form">
         <form class="chat-form" action="{{ url_for( 'chat.create_messages', channel_id=channels.channel_id )}}" method="post">
-          <input type="text" name="message" placeholder="メッセージを入力..." required>
+          <input type="text" name="message" placeholder="メッセージを入力...">
           <button type="submit" class="send-btn">
             <img src="{{ url_for('static', filename='img/送信アイコン.png') }}" alt="送信" class="submission"/>
           </button>    

@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -138,7 +139,7 @@ main {
   /* word-breakはメッセージを吹き出し内で改行するためのプロパティ */
 }
 
-.bubble {
+.balloon {
   padding: 16px 24px;
   border-radius: 10px;
   position: relative;   /* しっぽのための基準 */
@@ -148,15 +149,16 @@ main {
 .massages-self {
   align-self: flex-end;
 }
-.massages-self .bubble {
+.massages-self .balloon {
   background: #1A8BA6;
   color: #FFFFFF;
+  margin: 0 12px;
 }
-.massages-self .bubble::after {
+.massages-self .balloon::after {
   content: "";
   position: absolute;
   top: 12px;
-  right: -10px;
+  right: -20px;
   border-width: 10px;
   border-style: solid;
   border-color: transparent transparent transparent #1A8BA6;
@@ -170,15 +172,16 @@ main {
 .massages-other {
   align-self: flex-start;
 }
-.massages-other .bubble {
+.massages-other .balloon {
   background: #5CA8B6;
   color: #fff;
+  margin: 0 12px;
 }
-.massages-other .bubble::after {
+.massages-other .balloon::after {
   content: "";
   position: absolute;
   top: 12px;
-  left: -10px;
+  left: -20px;
   border-width: 10px;
   border-style: solid;
   border-color: transparent #5CA8B6 transparent transparent;
@@ -191,6 +194,7 @@ main {
   color: #000000;
   font-size: 12px;
   cursor: pointer;
+  margin: 0 12px;
 }
 
 /* ===== 送信フォーム ===== */
@@ -260,7 +264,7 @@ main {
   background-color: #F3F2F2;
   line-height: 80px;
   animation-name: popup;
-  animation-duration: 0.5s;
+  animation-duration: 0.3s;
 }
 
 @keyframes popup {
@@ -280,9 +284,12 @@ main {
 #u_msg {
   width: 80%;
   margin: 0 auto;
+  padding: 12px;
   border-radius: 12px;
   background-color: #D9D9D9;
   color: #0F5A5D;
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 .modal button {

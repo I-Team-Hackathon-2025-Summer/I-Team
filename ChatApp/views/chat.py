@@ -18,6 +18,7 @@ def chat_view(channel_id):
     channels = Chat.find_by_channel(channel_id)
     #メッセージとユーザ名表示
     messages = Chat.messages_get_all(channel_id)
+    
     return render_template('chat/chat.html', channels=channels, messages=messages, user_id=user_id, page='chat')
 
 #メッセージ作成

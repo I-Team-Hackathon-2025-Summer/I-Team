@@ -16,6 +16,7 @@ let targetForm = null;
 // モーダルを開く
 openBtns.forEach((btn) => {
   // forEachはリストから1つずつ取り出して実行するforループのような処理
+  //openBtnsの値が引数のbtnに入る
   btn.addEventListener("click", () => {
     targetForm = btn.closest("form");
     // 押されたボタンに最も近いフォームをtargetFormに入れる
@@ -24,7 +25,9 @@ openBtns.forEach((btn) => {
     // クリックされたボタンのdata-message属性からメッセージを取得
     // getAttributeは指定した要素の特定の属性の値を取得するためのメソッド
     const message = btn.getAttribute("data-message");
+
     // モーダルにメッセージを設定
+    //textContentは要素内のテキストを簡単に取得・設定するための便利なプロパティ
     messageElement.textContent = message;
 
     modal.style.display = "flex";

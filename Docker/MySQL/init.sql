@@ -43,6 +43,7 @@ CREATE TABLE open_messages (
 );
 
 INSERT INTO users(user_id, user_name, email, password) VALUES('970af84c-dd40-47ff-af23-282b72b7cca8','テスト','test@gmail.com','testtest123');
+INSERT INTO users(user_id, user_name, email, password) VALUES('970af84c-dd40-47ff-af23-282b72b7cca9','テスト1','test1@gmail.com','testtest456');
 
 INSERT INTO areas(area_id,area_name) 
 VALUES
