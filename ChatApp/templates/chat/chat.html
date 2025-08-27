@@ -1,0 +1,63 @@
+
+{% extends 'base.html' %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock %}
+{% block title %}
+<title>chat</title>
+{% endblock %}
+
+{% block body %}
+<div class="chat-wrapper">
+  {% include 'header.html' %}
+  <main>
+
+  <!-- ======== チャット画面 ======== -->
+     
+    <div class="chat-container">
+      <!-- メッセージが0件ではない（存在する）ときに処理を続ける -->
+      {% if messages|length > 0 %}
+        <!-- messagesリストの値をmassageに代入するループ -->
+        {% for messages in messages%}
+          <!-- 渡されたIDとユーザIDが一致すればmassages-self（自身）として処理 -->
+          {% if messages.user_id == user_id %}
+            <div class="massages-self">
+              <div class="bubble">
+               <p>{{ messages.message }}</p>
+              </div>
+              <form
+                class="delete-form"
+                action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
+                method="post">
+                <button class="openModal" data-message="{{ messages.message }}" type="button">削除</button>
+              </form>
+            </div>
+          {% else %}
+            <div class="massages-other">
+              <p class="name">{{ messages.user_name }}</p>
+              <div class="bubble">
+                <p>{{ messages.message }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <p id="no-message">まだメッセージがありません</p>
+      {% endif %}
+    </div>
+
+  <!-- ======== 送信フォーム ======== -->
+
+      <div class="submission_form">
+        <form class="chat-form" action="{{ url_for( 'chat.create_messages', channel_id=channels.channel_id )}}" method="post">
+          <input type="text" name="message" placeholder="メッセージを入力..." required>
+          <button type="submit" class="send-btn">
+            <img src="{{ url_for('static', filename='img/送信アイコン.png') }}" alt="送信" class="submission"/>
+          </button>    
+        </form> 
+      </div>
+
+  </main>
+</div> 
+{% include 'chat/modal.html' %}
+{% endblock %}

@@ -8,7 +8,6 @@ from models.user import User
 #Blueprintオブジェクト作成
 login_logout = Blueprint('login_logout', __name__, template_folder = 'templates', static_folder = 'static')
 
-
 #ログイン画面
 @login_logout.route('/login', methods=['GET'])
 def login_view():
@@ -36,6 +35,7 @@ def login_process():
                 return redirect(url_for('home.home_view'))
     return redirect(url_for('login_logout.login_view'))    
 
+#ログアウト処理
 @login_logout.route('/logout')
 def logout():
     session.clear()

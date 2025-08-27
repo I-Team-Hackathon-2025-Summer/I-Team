@@ -14,7 +14,7 @@ def home_view():
     else:
         areas = Channel.areas_get_all()
         #areas.reverse()
-    return render_template('channels/home.html', areas=areas)
+        return render_template('channels/home.html', areas=areas, page='home')
 
 
 

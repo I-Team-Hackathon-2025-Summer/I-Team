@@ -45,7 +45,7 @@ class Channel:
               sql = "SELECT * FROM areas WHERE area_id=%s;"
               cur.execute(sql,(area_id,))
               areas = cur.fetchone()
-          return areas
+              return areas
       except pymysql.Error as e:
           print(f'エラーが発生しています。：{e}')
           abort(500)

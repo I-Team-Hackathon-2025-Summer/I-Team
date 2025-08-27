@@ -43,6 +43,7 @@ def signup_process():
             #データベースにユーザー情報を登録
             User.create(user_id, user_name, email, password)
             UserId = str(user_id)
+            #ユーザー情報をセッションに保存
             session['user_id'] = UserId
             return redirect(url_for('home.home_view'))
     return redirect(url_for('signup.signup_process'))
