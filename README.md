@@ -43,12 +43,11 @@ http://localhost:55000
 ```
 .
 ├── ChatApp              # サンプルアプリ用ディレクトリ
-│   ├── __init__.py
-│   ├── app.py
-│   ├── models.py
+│   ├── models
 │   ├── static          # 静的ファイル用ディレクトリ
 │   ├── templates       # Template(HTML)用ディレクトリ
-│   └── util
+│   ├── vies
+│   └── app.py
 ├── Docker
 │   ├── Flask
 │   │   └── Dockerfile # Flask(Python)用Dockerファイル
