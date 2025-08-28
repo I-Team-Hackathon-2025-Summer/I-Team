@@ -14,11 +14,12 @@ def chat_view(channel_id):
   if user_id is None:
     return redirect(url_for('login_logout.login_view'))
   else:
-    #チャンネル名とチャンネルIDのため
+    #チャンネル名とchannel_idとarea_idのため
     channels = Chat.find_by_channel(channel_id)
     #メッセージとユーザ名表示
     messages = Chat.messages_get_all(channel_id)
-    return render_template('chat/chat.html', channels=channels, messages=messages, user_id=user_id, page='chat')
+    
+    return render_template('chat/chat.html',  channels=channels, messages=messages, user_id=user_id, page='chat')
 
 #メッセージ作成
 @chat.route('/channels/<channel_id>/chat', methods=['POST'])
@@ -39,7 +40,7 @@ def delete_messages(channel_id, message_id):
   user_id = session.get('user_id')
   if user_id is None:
     return redirect(url_for('login_logout.login_view'))
-  
+
   if message_id:
     Chat.delete_message(message_id)
     return redirect(url_for('chat.chat_view', channel_id=channel_id))

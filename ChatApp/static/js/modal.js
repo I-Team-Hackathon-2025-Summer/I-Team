@@ -14,22 +14,8 @@ let targetForm = null;
 // このあと削除対象にするフォームを一時的に入れる変数（nullからスタート）
 
 // モーダルを開く
-openBtns.forEach((btn) => {
-  // forEachはリストから1つずつ取り出して実行するforループのような処理
-  btn.addEventListener("click", () => {
-    targetForm = btn.closest("form");
-    // 押されたボタンに最も近いフォームをtargetFormに入れる
-    // closest()は直近の要素を親要素として返すメソッド
-    
-    // クリックされたボタンのdata-message属性からメッセージを取得
-    // getAttributeは指定した要素の特定の属性の値を取得するためのメソッド
-    const message = btn.getAttribute("data-message");
-    // モーダルにメッセージを設定
-    messageElement.textContent = message;
-
-    modal.style.display = "flex";
-    // モーダルを表示する
-  });
+openModal.addEventListener('click', () => {
+  modal.showModal();   //モーダルを表示
 });
 
 // 削除ボタンをクリックしたとき

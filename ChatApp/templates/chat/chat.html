@@ -26,18 +26,16 @@
                <p>{{ messages.message }}</p>
               </div>
               <form
-                class="delete-form"
-                action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
-                method="post">
-                <button class="openModal" data-message="{{ messages.message }}" type="button">削除</button>
+              class="delete-form"
+              action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
+              method="post">
+                <button id="openModal" class="delete" type="submit">削除</button>
               </form>
             </div>
           {% else %}
             <div class="massages-other">
               <p class="name">{{ messages.user_name }}</p>
-              <div class="balloon">
-                <p>{{ messages.message }}</p>
-              </div>
+              <p>{{ messages.message }}</p>
             </div>
           {% endif %}
         {% endfor %}
@@ -49,6 +47,7 @@
   <!-- ======== 送信フォーム ======== -->
 
       <div class="submission_form">
+        <!-- messages.area_idやchannel_idにするとまだメッセがデータにないと「ないよ」ってエラーになる -->
         <form class="chat-form" action="{{ url_for( 'chat.create_messages', channel_id=channels.channel_id )}}" method="post">
           <input type="text" name="message" placeholder="メッセージを入力...">
           <button type="submit" class="send-btn">

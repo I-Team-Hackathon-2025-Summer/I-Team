@@ -4,7 +4,7 @@ import pymysql
 from models.DB import DB
 
 
-# 初期起動時にコネクションプールを作成し接続を確立
+#初期起動時にコネクションプールを作成し接続を確立
 #プールは限られた数の接続を管理し、再利用する為の仕組み
 #DB接続プール: DB接続をあらかじめ確保し、アプリケーションが必要なときに接続を取得し、使用後にプールに戻す仕組み
 db_pool = DB.init_db_pool()
@@ -18,6 +18,8 @@ class User:
    #役割②：使い回しができる。同クラス内の他関数にclsを使えば、clsを介してそのクラスのクラス変数やクラスメソッドにアクセスできる
    def create(cls, user_id, user_name, email, password):
        #DB接続プールからコネクションを取得する
+       #セッションスタート
+       #セッション：通信の始まりから終わりまで
        conn = db_pool.get_conn()
        #try-except文はPythonにおけるエラーハンドリングのための構文
        #try: エラーが発生する可能性のあるコードを含むブロック
@@ -27,14 +29,17 @@ class User:
             #withはcursorで取得したカーソルが自動的に閉じられる。withを抜けるとカーソルが自動的に解放されるため、close()を呼び出す必要がない
             #closeはリソースを完全に閉じて使用できなくする。cursorを閉じることで、他のプロセスがそのcursorにアクセスできるようにする
             #with内でエラーが発生した場合でも,カーソルは自動的に解放される
+            #SQLを実行するための箱が用意される
            with conn.cursor() as cur:
                sql = "INSERT INTO users (user_id, user_name, email, password) VALUES (%s, %s, %s, %s);"
                # SQLを実行し、パラメータ（uid, name, email, password）を埋め込む
                #executeはSQLクエリを実行するために使う
                cur.execute(sql, (user_id, user_name, email, password,))
                # データベースに変更を反映（保存）する
+               #カーソルとセッションもクローズ
                conn.commit()
         #except: 特定のエラーを捕捉し、そのエラーに対する処理を記述
+        #本来はトレースバック処理の記述が必要
        except pymysql.Error as e:
            #f-stringは文字列内に変数や式を埋め込むことができ、より簡潔で読みやすいコードを書くことができる
            #abortは特定のHTTPステータスコードを返してリクエストを中断することができる
@@ -55,6 +60,7 @@ class User:
                 sql = "SELECT * FROM users WHERE email=%s;"
                 cur.execute(sql, (email,))
                 #fetchoneは実行したSQLクエリの結果から1行だけを取得するために使う
+                #辞書リスト型(リスト内包表記)で返ってくる
                 user = cur.fetchone()
             return user
        except pymysql.Error as e:

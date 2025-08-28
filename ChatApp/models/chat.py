@@ -36,7 +36,8 @@ class Chat:
                 SELECT *
                 FROM open_messages AS m
                 INNER JOIN users AS u ON m.user_id = u.user_id
-                WHERE channel_id=%s;
+                WHERE channel_id=%s
+                ORDER BY created_at ASC;
               """
             cur.execute(sql, (channel_id,))
             #fetchallはSQLクエリの結果からすべての行を取得する

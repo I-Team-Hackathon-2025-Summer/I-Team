@@ -1,5 +1,3 @@
-<input type="checkbox" id="drawer-toggle" hidden>
-
 {% if page == 'home' %}
 <header class="header">
   <div class="header-inner">
@@ -17,7 +15,9 @@
 {% elif page == 'ch' %}
 <header class="header">
   <div class="header-inner">
-    <a class="back-btn" onclick="history.back()"><img src="{{ url_for('static', filename='img/戻る.png') }}" alt="戻る"></a>
+    <a class="back-btn" href="{{ url_for('home.home_view') }}">
+      <img src="{{ url_for('static', filename='img/戻る.png') }}" alt="戻る">
+    </a>
     <img class="header-logo" src="{{ url_for('static', filename='img/Tabitalkロゴ.png') }}" alt="ロゴ">
     <span class="header-uname">{{ session['user_name'] }}</span>
 
@@ -31,16 +31,16 @@
 
 {% elif page == 'chat' %}
 <header class="header">
-  <div class="header-inner">
-    <a class="back-btn" onclick="history.back()">
-      <img src="{{ url_for('static', filename='img/戻る.png') }}" alt="戻る">
-    </a>
+  <div class="header-contener"> 
+    <!-- スペルミス container -->
+    <div class="header-left">
+      <img src="{{ url_for('static', filename='img/戻る.png') }}" alt="戻る" class="back"/>
+    </div>
 
-    <div class="header-texts">
-      <div class="titles">
-        <p class="channel">チャンネル名</p>
-        <p class="user">{{ session['user_name'] }}</p>
-      </div>
+    <div class="header-center">
+      <img src="{{ url_for('static', filename='img/Tabitalkロゴ.png') }}" alt="Tabitalkロゴ" class="header-img"/>
+      <p class="channel">チャンネル名</p>
+      <p class="user">ユーザー名</p>
     </div>
 
     <!-- ハンバーガー -->
