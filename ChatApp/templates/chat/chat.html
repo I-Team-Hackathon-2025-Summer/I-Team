@@ -27,7 +27,7 @@
               </div>
               <form
                 class="delete-form"
-                action="{{ url_for( 'chat.delete_messages',area_id=channels.area_id, channel_id=channels.channel_id, message_id=messages.message_id )}}"
+                action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
                 method="post">
                   <!-- strftimeメソッドはdatetimeオブジェクトを日付や時間を指定したフォーマットの文字列に変換できる -->
                   <span class="timestamp">{{messages.created_at.strftime("%-m.%-d %H:%M")}}</span>
@@ -54,7 +54,7 @@
 
       <div class="submission_form">
         <!-- messages.area_idやchannel_idにするとまだメッセがデータにないと「ないよ」ってエラーになる -->
-        <form class="chat-form" action="{{ url_for( 'chat.create_messages', area_id=channels.area_id, channel_id=channels.channel_id )}}" method="post">
+        <form class="chat-form" action="{{ url_for( 'chat.create_messages', channel_id=channels.channel_id )}}" method="post">
           <input type="text" name="message" placeholder="メッセージを入力...">
           <button type="submit" class="send-btn">
             <img src="{{ url_for('static', filename='img/送信アイコン.png') }}" alt="送信" class="submission"/>
