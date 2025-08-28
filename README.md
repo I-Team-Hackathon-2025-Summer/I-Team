@@ -1,4 +1,4 @@
-# hackathon-begginers-sample
+# Tabitalk
 ハッカソンの初級者コース用のChatAppです。
 
 **最初に環境変数ファイル（.env）を作成します**
