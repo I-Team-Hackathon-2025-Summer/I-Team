@@ -1,38 +1,3 @@
-# hackathon-begginers-sample
-ハッカソンの初級者コース用のChatAppです。
-
-**最初に環境変数ファイル（.env）を作成します**
-- Mac、Windows(PowerShell、Git Bash)の場合
-```
-cp .env.example .env
-```
-- Windows(コマンドプロンプト)の場合
-```
-copy .env.example .env
-```
-
-**起動方法**
-1. イメージのビルド
-
-```.sh
-docker compose build
-```
-- `docker-compose.yml`の内容に従って、コンテナイメージをビルドします。
-- 初回または依存パッケージを更新したときに実行してください。
-
-2. コンテナの起動
-
-```.sh
-docker compose up
-```
-- コンテナを起動します。
-- `-d`オプションをつけるとバックグラウンドで起動します
-
-停止したいときは`Ctrl + C`または以下のコマンドを使ってください：
-```.sh
-docker compose down
-```
-
 **ブラウザで確認**
 ```
 http://localhost:55000
