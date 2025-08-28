@@ -29,7 +29,7 @@ def login_process():
         else:
             hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
             print(hashPassword)
-            if password != user["password"]:
+            if hashPassword != user["password"]:
                 flash('パスワードが間違っています！')
             else:
                 #ログイン時にsessionに値を保存
