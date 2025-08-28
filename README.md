@@ -10,8 +10,8 @@ http://localhost:55000
 ### ディレクトリ構成
 ```
 .
-├── ChatApp             # サンプルアプリ用ディレクトリ
-│   ├── models
+├── ChatApp             # Tabitalkアプリ用ディレクトリ
+│   ├── models          # 
 │   ├── static          # 静的ファイル用ディレクトリ
 │   ├── templates       # Template(HTML)用ディレクトリ
 │   ├── views
