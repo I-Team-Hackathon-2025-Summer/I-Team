@@ -1,5 +1,4 @@
 
-
 {% extends 'base.html' %}
 {% block stylesheet %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
@@ -28,11 +27,11 @@
               </div>
               <form
                 class="delete-form"
-                action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
+                action="{{ url_for( 'chat.delete_messages',area_id=channels.area_id, channel_id=channels.channel_id, message_id=messages.message_id )}}"
                 method="post">
-                <!-- strftimeメソッドはdatetimeオブジェクトを日付や時間を指定したフォーマットの文字列に変換できる -->
-                <span>{{messages.created_at.strftime("%m.%d %H:%M")}}</span>
-                <button class="openModal" data-message="{{ messages.message }}" type="button">削除</button>
+                  <!-- strftimeメソッドはdatetimeオブジェクトを日付や時間を指定したフォーマットの文字列に変換できる -->
+                  <span class="timestamp">{{messages.created_at.strftime("%-m.%-d %H:%M")}}</span>
+                  <button class="openModal" data-message="{{ messages.message }}" type="button">削除</button>
               </form>
             </div>
           {% else %}
@@ -42,7 +41,7 @@
                 <p>{{ messages.message }}</p>
               </div>
               <!-- strftimeメソッドはdatetimeオブジェクトを日付や時間を指定したフォーマットの文字列に変換できる -->
-              <span>{{messages.created_at.strftime("%m.%d %H:%M")}}</span>
+              <span class="timestamp">{{messages.created_at.strftime("%-m.%-d %H:%M")}}</span>
             </div>
           {% endif %}
         {% endfor %}
@@ -54,7 +53,8 @@
   <!-- ======== 送信フォーム ======== -->
 
       <div class="submission_form">
-        <form class="chat-form" action="{{ url_for( 'chat.create_messages', channel_id=channels.channel_id )}}" method="post">
+        <!-- messages.area_idやchannel_idにするとまだメッセがデータにないと「ないよ」ってエラーになる -->
+        <form class="chat-form" action="{{ url_for( 'chat.create_messages', area_id=channels.area_id, channel_id=channels.channel_id )}}" method="post">
           <input type="text" name="message" placeholder="メッセージを入力...">
           <button type="submit" class="send-btn">
             <img src="{{ url_for('static', filename='img/送信アイコン.png') }}" alt="送信" class="submission"/>
