@@ -26,16 +26,22 @@
                <p>{{ messages.message }}</p>
               </div>
               <form
-              class="delete-form"
-              action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
-              method="post">
-                <button id="openModal" class="delete" type="submit">削除</button>
+                class="delete-form"
+                action="{{ url_for( 'chat.delete_messages', channel_id=channels.channel_id, message_id=messages.message_id )}}"
+                method="post">
+                  <!-- strftimeメソッドはdatetimeオブジェクトを日付や時間を指定したフォーマットの文字列に変換できる -->
+                  <span class="timestamp">{{messages.created_at.strftime("%-m.%-d %H:%M")}}</span>
+                  <button class="openModal" data-message="{{ messages.message }}" type="button">削除</button>
               </form>
             </div>
           {% else %}
             <div class="massages-other">
               <p class="name">{{ messages.user_name }}</p>
-              <p>{{ messages.message }}</p>
+              <div class="balloon">
+                <p>{{ messages.message }}</p>
+              </div>
+              <!-- strftimeメソッドはdatetimeオブジェクトを日付や時間を指定したフォーマットの文字列に変換できる -->
+              <span class="timestamp">{{messages.created_at.strftime("%-m.%-d %H:%M")}}</span>
             </div>
           {% endif %}
         {% endfor %}
