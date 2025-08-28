@@ -11,7 +11,7 @@ http://localhost:55000
 │   ├── models
 │   ├── static          # 静的ファイル用ディレクトリ
 │   ├── templates       # Template(HTML)用ディレクトリ
-│   ├── vies
+│   ├── views
 │   └── app.py
 ├── Docker
 │   ├── Flask
