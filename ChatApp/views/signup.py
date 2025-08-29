@@ -35,9 +35,9 @@ def signup_process():
         user_id = uuid.uuid4()
         #hashlibでパスワードをハッシュ化
         password = hashlib.sha256(password.encode('utf-8')).hexdigest()
-        registered_usr = User.find_by_email(email)
+        registered_user = User.find_by_email(email)
 
-        if registered_usr != None:
+        if registered_user != None:
             flash('既に登録されているようです')
         else:
             #データベースにユーザー情報を登録

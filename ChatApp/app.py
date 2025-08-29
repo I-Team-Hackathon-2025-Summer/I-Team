@@ -1,4 +1,4 @@
-from flask import Flask, session, redirect, url_for, render_template
+from flask import Flask, session, redirect, url_for
 from views.login_logout import login_logout
 from views.channels import channels
 from views.signup import signup

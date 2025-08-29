@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -93,9 +94,9 @@ body {
 }
 
 #drawer-toggle:checked ~ .drawer_nav {
+  right: calc((100vw - min(430px, 100vw)) / 2);
   /* 画面幅（100vh）から最大430pxを引いた余白÷2（半分）にして右側に寄せる
   これによってbodyじゃなくwrapperの右端から出てくる */
-  right: calc((100vw - min(430px, 100vw)) / 2);
 }
 
 .drawer_nav ul { list-style: none; }
@@ -115,30 +116,27 @@ main {
 }
 
 .chat-container {
-  flex: 1 1 auto;
+  flex: 1 1 auto;     /* 余白があれば伸び/なければ縮む */
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   padding: 12px;
   gap: 10px;
   background-color: #7DD3DC;
-  padding-bottom: 120px;
-  /* 送信フォームに隠れないための下余白 */
+  padding-bottom: 120px;      /* 送信フォームに隠れないための下余白 */
 }
 
 /* ===== 吹き出し共通 ===== */
 .massages-self, .massages-other {
-  max-width: 60%;
+  max-width: 80%;
   margin: 8px 0;
-  display: flex;
-  flex-direction: column;
   font-size: 14px;
   line-height: 1.5;
   word-break: break-word;
   /* word-breakはメッセージを吹き出し内で改行するためのプロパティ */
 }
 
-.bubble {
+.balloon {
   padding: 16px 24px;
   border-radius: 10px;
   position: relative;   /* しっぽのための基準 */
@@ -147,41 +145,64 @@ main {
 /* ===== 自分（右側） ===== */
 .massages-self {
   align-self: flex-end;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: end;
 }
-.massages-self .bubble {
+.massages-self .balloon {
+  width: auto;
   background: #1A8BA6;
   color: #FFFFFF;
+  margin: 0 12px 0 8px;
 }
-.massages-self .bubble::after {
+.massages-self .balloon::after {
   content: "";
   position: absolute;
   top: 12px;
-  right: -10px;
+  right: -20px;
   border-width: 10px;
   border-style: solid;
   border-color: transparent transparent transparent #1A8BA6;
 }
-.massages-self .delete-form {
+/* .massages-self .delete-form {
   text-align: right;
-  margin-top: 2px; /* 吹き出しに削除ボタンを近づける */
+  margin-top: 2px; 吹き出しに削除ボタンを近づける
+} */
+
+.delete-form  {
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
 /* ===== 相手（左側） ===== */
 .massages-other {
   align-self: flex-start;
 }
-.massages-other .bubble {
+.massages-other .balloon {
   background: #5CA8B6;
   color: #fff;
+  margin: 4px 8px 0 12px;
 }
-.massages-other .bubble::after {
+.massages-other .balloon::after {
   content: "";
   position: absolute;
   top: 12px;
-  left: -10px;
+  left: -20px;
   border-width: 10px;
   border-style: solid;
   border-color: transparent #5CA8B6 transparent transparent;
+}
+
+.massages-other .balloon,
+.massages-other .timestamp {
+  display: inline-block;     /* 吹き出しとタイムスタンプを並列化 */
+  vertical-align: bottom;    /* 下揃え */
+}
+
+span {
+  font-size: 12px;
 }
 
 /* ===== 削除ボタン ===== */
@@ -191,6 +212,7 @@ main {
   color: #000000;
   font-size: 12px;
   cursor: pointer;
+  margin: 0;
 }
 
 /* ===== 送信フォーム ===== */
@@ -260,7 +282,7 @@ main {
   background-color: #F3F2F2;
   line-height: 80px;
   animation-name: popup;
-  animation-duration: 0.5s;
+  animation-duration: 0.3s;
 }
 
 @keyframes popup {
@@ -280,9 +302,12 @@ main {
 #u_msg {
   width: 80%;
   margin: 0 auto;
+  padding: 12px;
   border-radius: 12px;
   background-color: #D9D9D9;
   color: #0F5A5D;
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 .modal button {

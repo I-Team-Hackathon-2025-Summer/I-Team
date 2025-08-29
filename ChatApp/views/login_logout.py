@@ -31,7 +31,10 @@ def login_process():
             if hashPassword != user["password"]:
                 flash('パスワードが間違っています！')
             else:
+                #ログイン時sessionに値を保存
                 session['user_id'] = user["user_id"]
+                #ユーザー名表示のために必要
+                session['user_name'] = user["user_name"]
                 return redirect(url_for('home.home_view'))
     return redirect(url_for('login_logout.login_view'))    
 
