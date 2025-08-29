@@ -56,5 +56,7 @@ def signup_process():
             #多分uuidをstringとして保存して欲しいから記載
             UserId = str(user_id)
             session['user_id'] = UserId
+            #ユーザ名表示のために必要
+            session['user_name'] = user_name
             return redirect(url_for('home.home_view'))
     return redirect(url_for('signup.signup_process'))
