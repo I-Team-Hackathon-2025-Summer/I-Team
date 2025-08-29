@@ -161,3 +161,4 @@ cython_debug/
 
 /ChatApp/static/gen/*
 .DS_Store
+/.env
